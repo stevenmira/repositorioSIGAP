@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('layouts/inicio');
 });
+
+//Reportes tácticos
+Route::resource('credito/competo','CreditoCompletoController');

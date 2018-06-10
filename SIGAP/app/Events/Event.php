@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace sigafi\Events;
 
 abstract class Event
 {
