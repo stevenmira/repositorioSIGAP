@@ -17,3 +17,11 @@ Route::get('/', function () {
 
 //Reportes tácticos
 Route::resource('credito/competo','CreditoCompletoController');
+
+Route::resource('control/refinanciamiento','RefinanciamientoController');
+
+
+
+//Reportes Estrategicos
+Route::resource('control/clienteMoroso','ClienteMorosoController');
+Route::resource('control/credito','ControlCreditoController');
