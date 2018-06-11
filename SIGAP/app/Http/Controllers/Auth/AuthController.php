@@ -1,12 +1,24 @@
 <?php
 
+
+
 namespace sigafi\Http\Controllers\Auth;
 
 use sigafi\User;
+use sigafi\TipoUsuario;
 use Validator;
 use sigafi\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Session;
+use sigafi\Fecha;
+use Carbon\Carbon; 
+
+use DB;
+
 
 class AuthController extends Controller
 {
@@ -23,21 +35,17 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->auth = $auth;
+        $this->middleware('guest', ['except' => 'getLogout']);
+       
     }
 
     /**
@@ -46,27 +54,113 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+   
+
+
+//login
+
+       protected function getLogin()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+       $fecha_actual = Fecha::spanish();
+        return view("login")->with("fecha_actual",$fecha_actual);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+
+       
+
+        public function postLogin(Request $request)
+   {
+    $fecha_actual = Fecha::spanish();
+    $this->validate($request, [
+        'name' => 'required',
+        'password' => 'required',
+    ]);
+
+
+
+    $credentials = $request->only('name', 'password');
+
+
+
+    if ($this->auth->attempt($credentials, $request->has('remember')))
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+    
+       $usuarioactual=\Auth::user();
+       //funcion que comprueba los prestamos vencidos
+       $fecha_actual = Carbon::now();
+       $fecha_actual = $fecha_actual->format('Y-m-d');
+      
+         return view('/layouts/inicio')->with("usuarioactual",  $usuarioactual);
+       
+   
     }
+
+    Session::flash('message','Usuario o Contraseña Incorrectos');
+    return view("login")->with("fecha_actual",$fecha_actual);;
+
+    }
+
+
+//login
+
+ //registro   
+
+
+        protected function getRegister()
+    {
+       $usuarioactual=\Auth::user();
+       return view("registro")->with("usuarioactual",  $usuarioactual);
+    }
+
+
+        
+
+protected function postRegister(Request $request)
+{
+    
+
+    $data = $request;
+
+
+    $usuario= new User;
+    $usuario->name  =  $data['name'];
+    $usuario->email=$data['email'];
+    $usuario->idtipousuario=$data['idtipousuario'];
+    $usuario->password=bcrypt($data['password']);
+    $usuario->save();
+    
+    
+    Session::flash('message',"Usuario agregado correctamente");
+    return back();
+               
+    
+   
+
+   
+
+}
+public function tregistro()
+    {
+
+        $tiposusuario=TipoUsuario::all();
+        return view('registro')->with("tiposusuario",$tiposusuario);
+        
+    }
+
+//registro
+
+protected function getLogout()
+    {
+        $this->auth->logout();
+
+        Session::flush();
+
+        return redirect('login');
+    }
+
+
+
+
+
+
 }
