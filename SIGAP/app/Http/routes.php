@@ -20,7 +20,7 @@ Route::group(['middleware' => 'guest'], function () {
    
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@index');
     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
     Route::resource('usuario','UsuarioController');
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'usuarioAdmin'], function () {
-	
+    
 });
 
 
