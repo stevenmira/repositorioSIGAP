@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/estilos-stvn.css')}}">
 
   </head>
-  <body class="hold-transition skin-yellow sidebar-mini">
+  <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
@@ -31,9 +31,9 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>AD</b>V</span>
+          <span class="logo-mini"><b>SI</b>G</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>ADVentas</b></span>
+          <span class="logo-lg"><b>SIGAFI</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -113,8 +113,7 @@
             </li>
 
             <li class="treeview">
-              <a href="{{URL::action('CreditoCompletoController@index')}}">
-                <i class="fa fa-file"></i>
+              <a href="{{URL::action('CreditoCompletoController@create')}}">
                 <span>Reporte de créditos completos</span>
               </a>
             </li>
@@ -179,9 +178,9 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
+          <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2015-2020 <a href="www.incanatoit.com">IncanatoIT</a>.</strong> All rights reserved.
+        <strong>Sistema de Información Gerencial para la Administración de Préstamos Financieros &copy; <a href="#"> SIGAFI</a></strong>.  Todos los derechos reservados
       </footer>
 
       

@@ -16,4 +16,7 @@ Route::get('/', function () {
 });
 
 //Reportes tácticos
+#Route::get('credito/competo/review/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@edit']);
+#Route::resource('credito/competo','CreditoCompletoController');
 Route::resource('credito/competo','CreditoCompletoController');
+#Route::resource('credito/competo','CreditoCompletoController@create');

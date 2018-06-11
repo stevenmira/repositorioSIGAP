@@ -4,7 +4,7 @@ namespace sigafi\Http\Requests;
 
 use sigafi\Http\Requests\Request;
 
-class CreditoCompletoRequest extends Request
+class CreditoCompletoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreditoCompletoRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class CreditoCompletoRequest extends Request
     public function rules()
     {
         return [
-            //
+            'desde'=>'required',
+            'hasta'=>'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
+            'desde.required' =>'El campo -- FECHA INICIO -- es obligatorio.',
+            'hasta.required' =>'El campo -- FECHA FIN -- es obligatorio.'
+            
         ];
     }
 }
