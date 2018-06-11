@@ -8,13 +8,15 @@ role="dialog" tabindex="-1" id="modal-ayuda">
             aria-label="Close">
                  <span aria-hidden="true">×</span>
             </button>
-            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Control de credito </h2 >
+            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Clientes Morosos </h2 >
                 
 
                
 
         <blockquote>
-            <p>Este reporte mostrara los creditos abiertos en un periodo de tiempo</p>
+            <p>Este reporte mostrara  los clientes que posean mora luego de haber vencido el plazo del tiempo
+                de pago.
+            </p>
         </blockquote>
 
         <blockquote>

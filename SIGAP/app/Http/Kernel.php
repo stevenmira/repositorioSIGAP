@@ -49,5 +49,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \sigafi\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'usuarioAdmin'=> \App\Http\Middleware\MDusuarioadmin::class,
+        'usuarioEstrategico'=> \App\Http\Middleware\MDusuarioestrategico::class,
+        'usuarioTactico'=> \App\Http\Middleware\MDusuariotactico::class,
     ];
 }
