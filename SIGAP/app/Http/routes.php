@@ -19,4 +19,15 @@ Route::get('/', function () {
 #Route::get('credito/competo/review/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@edit']);
 #Route::resource('credito/competo','CreditoCompletoController');
 Route::resource('credito/competo','CreditoCompletoController');
+
 #Route::resource('credito/competo','CreditoCompletoController@create');
+
+
+Route::resource('control/refinanciamiento','RefinanciamientoController');
+
+
+
+//Reportes Estrategicos
+Route::resource('control/clienteMoroso','ClienteMorosoController');
+Route::resource('control/credito','ControlCreditoController');
+
