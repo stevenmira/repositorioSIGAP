@@ -61,4 +61,4 @@ Route::resource('control/refinanciamiento','RefinanciamientoController');
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
-Routte::resource('cartera/clientes','CarteraClienteController');
+Route::resource('cartera/clientes','CarteraClienteController');
