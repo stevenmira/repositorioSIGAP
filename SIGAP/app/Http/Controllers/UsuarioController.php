@@ -40,6 +40,7 @@ class UsuarioController extends Controller
         
      $data = $request;
      $usuario= new User;
+     $usuario->nombre =  $data['nombre'];
    
      $usuario->name=$data['name'];
      $usuario->email=$data['email'];
@@ -70,13 +71,14 @@ class UsuarioController extends Controller
     {
      $usuario = User::findOrFail($id);
      $data = $request;
+     $usuario->nombre =  $data['nombre'];
      $usuario->name=$data['name'];
      $usuario->email=$data['email'];
      $usuario->idtipousuario=$data['idtipousuario'];
      $usuario->password=bcrypt($data['password']);
      $usuario->update();
      
-     Session::flash('update',"El Usuario: ".$usuario->name. " ha sido editado correctamente");
+     Session::flash('update',"El Usuario: ".$usuario->nombre. " con Username: " .$usuario->name  ." ha sido editado correctamente");
        
     return redirect('usuario');
     }

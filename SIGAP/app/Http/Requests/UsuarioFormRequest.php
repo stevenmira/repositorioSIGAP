@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace sigafi\Http\Requests;
 
-use App\Http\Requests\Request;
+use sigafi\Http\Requests\Request;
 
 class UsuarioFormRequest extends Request
 {

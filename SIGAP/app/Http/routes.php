@@ -1,15 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+use sigafi\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 
 Route::group(['middleware' => 'guest'], function () {
@@ -45,12 +40,10 @@ Route::group(['middleware' => 'usuarioEstrategico'], function () {
 Route::group(['middleware' => 'usuarioTactico'], function () { 
 
 });
-//Reportes tácticos
-#Route::get('credito/competo/review/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@edit']);
-#Route::resource('credito/competo','CreditoCompletoController');
+
 Route::resource('credito/competo','CreditoCompletoController');
 
-#Route::resource('credito/competo','CreditoCompletoController@create');
+//Route::resource('credito/competo','CreditoCompletoController@create');
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
@@ -62,3 +55,6 @@ Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
 Route::resource('cartera/clientes','CarteraClienteController');
+
+Route::resource('cartera/clientes','CarteraClienteController');
+Route::resource('clasificacion/clientes','ClasificacionClienteController');

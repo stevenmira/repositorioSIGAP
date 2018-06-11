@@ -40,8 +40,10 @@
       <div style="color:#eee">
         </br>
         <p>
-         SIAP
-        <small>Sistema Informatico para la Administración de Prestamos.</small>
+        <b> SIGAFI</b>
+         </p>
+         <p>
+        <strong>Sistema de Informacion Gerencial para la Administración de Prestamos Financieros.</strong>
         </p>
         </br>
         <p>
@@ -53,7 +55,7 @@
 
     </div>
     <div class="">
-      <p>&copy; DEVS | Todos los derechos reservados. </p>
+      <p>&copy;AFIMID | Todos los derechos reservados. </p>
     </div>
    
 </div>

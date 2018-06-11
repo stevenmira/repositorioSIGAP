@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use sigafi\Http\Requests;
 use sigafi\Fecha;
 
-class CarteraClienteController extends Controller
+class ClasificacionClienteController extends Controller
 {
     public function index(Request $request)
     {
@@ -21,8 +21,7 @@ class CarteraClienteController extends Controller
     		$query = trim($request->get('searchText'));
 
             
-    		return view('Estrategicos.carteraCliente.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query, "usuarioactual"=>$usuarioactual]);
+    		return view('Tacticos.clasificacionClientes.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query, "usuarioactual"=>$usuarioactual]);
     	}
     }
-
 }
