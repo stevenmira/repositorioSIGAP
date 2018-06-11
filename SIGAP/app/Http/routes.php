@@ -15,19 +15,15 @@ Route::get('/', function () {
     return view('layouts/inicio');
 });
 
-//Reportes tácticos
-#Route::get('credito/competo/review/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@edit']);
-#Route::resource('credito/competo','CreditoCompletoController');
-Route::resource('credito/competo','CreditoCompletoController');
-
-#Route::resource('credito/competo','CreditoCompletoController@create');
-
-
+//Reportes Tacticos
 Route::resource('control/refinanciamiento','RefinanciamientoController');
+Route::resource('credito/competo','CreditoCompletoController');
+Route::resource('cartera/cliente','CarteraClienteController');
 
 
 
 //Reportes Estrategicos
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
+Route::resource('cartera/cliente/extendido','CarteraClienteExtendidoController');
 

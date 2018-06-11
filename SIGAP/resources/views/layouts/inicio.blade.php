@@ -113,8 +113,19 @@
             </li>
 
             <li class="treeview">
+              <a href="{{URL::action('CarteraClienteExtendidoController@create')}}">
+                <span>Reporte de cartera extendido</span>
+              </a>
+            </li>
+
+            <li class="treeview">
               <a href="{{URL::action('CreditoCompletoController@create')}}">
                 <span>Reporte de créditos completos</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="{{URL::action('CarteraClienteController@create')}}">
+                <span>Reporte de cartera de clientes</span>
               </a>
             </li>
                        
