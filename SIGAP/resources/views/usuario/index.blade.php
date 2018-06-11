@@ -74,7 +74,7 @@
                           </th>
                       </tr>
                         <tr class="info">
-                           
+                            <th>Nombre </th>
                             <th>Nombre de usuario</th>
                             <th>Rol de usuario</th>
                             <th>E-mail</th>
@@ -84,6 +84,7 @@
                    @foreach ($usuarios as $us)
                      
                       <tr>
+                          <td>{{ $us->nombre}}</td>
                           <td>{{ $us->name}}</td>
                           <td><?= $us->tipo($us->idtipousuario);   ?></td>
                           <td>{{ $us->email }}</td>
@@ -102,7 +103,7 @@
 
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;">
-      <p style="text-align:center;"><b>{{$usuarioactual->name}}</b></p>
+      <p style="text-align:center;"><b>{{$usuarioactual->nombre}}</b></p>
       <p style="text-align:center;"><?= $usuarioactual->tipo($usuarioactual->idtipousuario); ?></p>
   </div>
 

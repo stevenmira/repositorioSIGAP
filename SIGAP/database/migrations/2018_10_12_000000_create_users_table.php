@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('idtipousuario')->unsigned();
             $table->index('idtipousuario');
             $table->foreign('idtipousuario')->references('idtipousuario')->on('tipo_usuario')->onDelete('cascade');
-            
+            $table->string('nombre')->unique()->required();
             $table->string('name')->unique()->required();
             $table->string('email')->unique()->required();
             $table->string('password')->required();

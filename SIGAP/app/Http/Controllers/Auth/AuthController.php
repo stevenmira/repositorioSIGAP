@@ -123,6 +123,7 @@ protected function postRegister(Request $request)
 
 
     $usuario= new User;
+    $usuario->nombre  =  $data['nombre'];
     $usuario->name  =  $data['name'];
     $usuario->email=$data['email'];
     $usuario->idtipousuario=$data['idtipousuario'];

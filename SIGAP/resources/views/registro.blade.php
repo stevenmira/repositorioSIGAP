@@ -57,6 +57,12 @@
       <div class="form-group col-md-12">
       <div class="form-group col-md-4">
                          
+                            <label for="nombre">Nombre de Empleado</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre de Empleado" p required >
+                            
+      </div>
+      <div class="form-group col-md-4">
+                         
                             <label for="name">Nombre de Usuario</label>
                             <input type="text" class="form-control" id="name" name="name"  placeholder="Nombre de Usuario" p required >
                             
