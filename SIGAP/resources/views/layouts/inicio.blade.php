@@ -29,11 +29,11 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="{{url('home')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SI</b>G</span>
+          <span class="logo-mini"><b><small>SIGAP</small></b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>SIGAFI</b></span>
+          <span class="logo-lg"><b>SIGAP</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -50,24 +50,23 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Juan Carlos Arcila Díaz</span>
+                <i class="fa fa-circle" style="color:#00FF00"></i>
+                  <span class="hidden-xs">{{$usuarioactual->name}}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    
+                    <!-- User image -->
+                    <li class="user-header">
+                    <h4>ROL: <?= $usuarioactual->tipo($usuarioactual->idtipousuario); ?></h4>
                     <p>
-                      www.incanatoit.com - Desarrollando Software
-                      <small>www.youtube.com/jcarlosad7</small>
+                    Username: {{$usuarioactual->name}}
+                    <small></small>
                     </p>
                   </li>
-                  
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                    <a href="{{ route('logout')}}" class="btn btn-default btn-flat">Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>
@@ -85,72 +84,20 @@
           <!-- Sidebar user panel -->
                     
           <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="header"></li>
+          <ul class="sidebar-menu">       
+           
             
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="almacen/articulo"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                <li><a href="almacen/categoria"><i class="fa fa-circle-o"></i> Categorías</a></li>
-              </ul>
-            </li>
-            
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Estrategico</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Proveedores</a></li>
-              </ul>
-            </li>
-
-            <li class="treeview">
-              <a href="{{URL::action('CarteraClienteExtendidoController@create')}}">
-                <span>Reporte de cartera extendido</span>
-              </a>
-            </li>
-
-            <li class="treeview">
-              <a href="{{URL::action('CreditoCompletoController@create')}}">
-                <span>Reporte de créditos completos</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="{{URL::action('CarteraClienteController@create')}}">
-                <span>Reporte de cartera de clientes</span>
-              </a>
-            </li>
+            @if($usuarioactual->idtipousuario==1) 
+               @include('menu/admin')
+            @endif
+            @if($usuarioactual->idtipousuario==2)
+                @include('menu/tactico') 
+            @endif 
+            @if($usuarioactual->idtipousuario==3)
+                @include('menu/estrategico') 
+            @endif 
+           
                        
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                
-              </ul>
-            </li>
-             <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
                         
           </ul>
         </section>
