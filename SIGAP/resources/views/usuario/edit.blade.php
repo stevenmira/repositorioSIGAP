@@ -89,7 +89,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-lock" aria-hidden="true"></i>
                 </div>
-                {!! Form::password('password',['class' => 'form-control' , 'required' => 'required', 'placeholder'=>'Introduzca una nueva contraseña . . .', 'autofocus'=>'on', 'maxlength'=>'30']) !!}
+                {!! Form::password('password',['class' => 'form-control' , 'required' => 'required', 'placeholder'=>'Introduzca una nueva contraseña . . .', 'autofocus'=>'on', 'pattern'=>'[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*','title'=>'Para que la contraseña sea valida, debe comenzar con una letra, llevar una letra Mayuscula y minuscula, tener un min de 8 caracteres' ,'minlength'=>'8','maxlength'=>'30'])]) !!}
               </div>
             </div>
             <div class="row">
