@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use sigafi\Http\Requests;
 use sigafi\Fecha;
 
-class CarteraClienteController extends Controller
+class CarteraClienteGeneralController extends Controller
 {
     public function index(Request $request)
     {

@@ -54,9 +54,9 @@ Route::resource('control/refinanciamiento','RefinanciamientoController');
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
-Route::resource('cartera/clientes','CarteraClienteController');
+//Route::resource('cartera/clientes','CarteraClienteController');
 
-Route::resource('cartera/clientes','CarteraClienteController');
+Route::resource('cartera/clientes/general','CarteraClienteGeneralController');
 Route::resource('clasificacion/clientes','ClasificacionClienteController');
 
 //Reportes Gerenciales
