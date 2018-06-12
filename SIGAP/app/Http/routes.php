@@ -56,3 +56,16 @@ Route::resource('control/credito','ControlCreditoController');
 
 Route::resource('cartera/clientes','CarteraClienteController');
 Route::resource('clasificacion/clientes','ClasificacionClienteController');
+
+//Reportes Gerenciales
+Route::get('reporte1','Reporteria@reporte1');
+Route::get('reporte2','Reporteria@reporte2');
+Route::get('reporte3','Reporteria@reporte3');
+Route::get('reporte4','Reporteria@reporte4');
+Route::get('reporte5','Reporteria@reporte5');
+Route::get('reporte6','Reporteria@reporte6');
+Route::get('reporte7','Reporteria@reporte7');
+Route::get('reporte8','Reporteria@reporte8');
+Route::get('reporte9','Reporteria@reporte9');
+Route::get('reporte10','Reporteria@reporte10');
+Route::get('reporte11','Reporteria@reporte11');

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b505bd3e0676a257178a17a20b53962f",
+    "content-hash": "6d9af15cae4e2fd1f4ccc853553f097b",
     "packages": [
         {
             "name": "arielcr/numero-a-letras",
