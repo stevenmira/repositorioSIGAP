@@ -34,12 +34,12 @@ Route::group(['middleware' => 'usuarioAdmin'], function () {
 
 //VIstas para usuarios tipo EMPLEADO
 Route::group(['middleware' => 'usuarioEstrategico'], function () { 
-
+    Route::resource('cartera/cliente/extendido','CarteraClienteExtendidoController');
 });
 
 Route::group(['middleware' => 'usuarioTactico'], function () { 
     Route::resource('credito/competo','CreditoCompletoController');
-    Route::resource('credito/competo','CreditoCompletoController@create');
+    Route::resource('cartera/cliente/normal','CarteraClienteController');
 
 });
 
@@ -67,7 +67,7 @@ Route::get('reporte3','Reporteria@reporte3');
 Route::get('reporte4','Reporteria@reporte4');
 Route::get('reporte5','Reporteria@reporte5');
 Route::get('reporte6','Reporteria@reporte6');
-Route::get('reporte7','Reporteria@reporte7');
+Route::get('creditosCompletosPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@creditoCompletoPDF']);
 Route::get('reporte8','Reporteria@reporte8');
 Route::get('reporte9','Reporteria@reporte9');
 Route::get('reporte10','Reporteria@reporte10');

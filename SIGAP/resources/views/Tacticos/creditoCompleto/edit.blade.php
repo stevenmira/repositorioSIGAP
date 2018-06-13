@@ -24,35 +24,42 @@
     <p class="col-md-3 col-lg-3 col-sm-3 col-md-offset-1"><b>Fecha Fin:</b> {{$hasta}}</p>
   </div>
 
+  @if ($creditosCompletos==null)
+    <div class="row form-group">
+      <p class="col-md-12 col-lg-12 col-sm-12" style="color: red" align="center"><b>NO HAY REGISTRO DE CRÉDITOS COMPLETOS</b></p>
+    </div>
+  @endif
+
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="table-responsive">
           <table class="table table-striped table-bordered table-condensed table-hover">
               <thead>
                 <tr>
-                    <th style="border: 1px solid #333;" width="175px">FECHA DE OTORGAMIENTO</th>
-                    <th style="border: 1px solid #333;" width="200px">CLIENTE</th>
-                    <th style="border: 1px solid #333;" width="200px">NEGOCIO</th>
+                    <th style="border: 1px solid #333;" width="75px">FECHA</th>
+                    <th style="border: 1px solid #333;" width="225px">CLIENTE</th>
+                    <th style="border: 1px solid #333;" width="225px">NEGOCIO</th>
                     <th style="border: 1px solid #333;" width="100px">MONTO</th>
                     <th style="border: 1px solid #333;" width="100px">CUOTA DIARIA</th>
-                    <th style="border: 1px solid #333;" width="150px">CARTERA</th>
+                    <th style="border: 1px solid #333;" width="200px">CARTERA</th>
                 </tr>
               </thead>
-
+              @foreach ($creditosCompletos as $cc)
               <tr>
-                  <td style="border: 1px solid #333;">25-02-2018</td>
-                  <td style="border: 1px solid #333;">Carlos Alberto Mancia Galindo</td>
-                  <td style="border: 1px solid #333;">Venta de típicos</td>
-                  <td style="border: 1px solid #333;">$. 1500</td>
-                  <td style="border: 1px solid #333;">$. 150</td>
-                  <td style="border: 1px solid #333;">Tepecoyo</td>
+                  <td style="border: 1px solid #333;">{{$cc->fecha}}</td>
+                  <td style="border: 1px solid #333;">{{$cc->nombre}} {{$cc->apellido}}</td>
+                  <td style="border: 1px solid #333;">{{$cc->nombreNegocio}}</td>
+                  <td style="border: 1px solid #333;" align="right">{{$cc->monto}}</td>
+                  <td style="border: 1px solid #333;" align="right">{{$cc->cuotadiaria}}</td>
+                  <td style="border: 1px solid #333;">{{$cc->nombreCartera}}</td>
               </tr>
+              @endforeach
               <tr>
                   <td style="border: 1px solid #333;"><b>TOTAL</b></td>
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;"></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> tot 1</b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> tot 2</b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total1}}</b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total2}}</b></td>
                   <td style="border: 1px solid #333;"></td>
               </tr>
 
@@ -64,10 +71,10 @@
 
   <br>
   <div class="row">
-    <a href="{{URL::action('CreditoCompletoController@create')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
+    <a href="{{URL::action('CreditoCompletoController@create')}}"  class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <button type="submit" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</button>
+    <a href="{{ url('creditosCompletosPDF', ['id' => $desde, 'id2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</a>
 
   </div>
   <br><br>
