@@ -5,8 +5,12 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-               <li><a  href=""><i class="fa fa-circle-o"></i>Cartera de Clientes</a></li>
-               <li><a  href=""><i class="fa fa-circle-o"></i>Creditos Completo </a></li>
+               <li><a  href="{{URL::action('CarteraClienteController@create')}}"><i class="fa fa-circle-o">
+               </i>Cartera de Clientes</a></li>
+               <li><a  
+                href="{{URL::action('CreditoCompletoController@create')}}"><i class="fa fa-circle-o">
+                </i>Creditos Completo 
+                </a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Clientes Morosos </a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Contratos Vencidos</a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Clasificacion de Clientes</a></li>
