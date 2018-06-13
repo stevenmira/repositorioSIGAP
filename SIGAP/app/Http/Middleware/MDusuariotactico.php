@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
-use App\User;
-use App\TipoUsuario;
+namespace sigafi\Http\Middleware;
+use sigafi\User;
+use sigafi\TipoUsuario;
 use Closure;
 
-class MSusuarioempleado
+class MDusuariotactico
 {
     /**
      * Handle an incoming request.

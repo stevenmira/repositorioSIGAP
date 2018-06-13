@@ -11,6 +11,7 @@ use sigafi\TipoUsuario;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
+  
     use Authenticatable, CanResetPassword;
 
     /**

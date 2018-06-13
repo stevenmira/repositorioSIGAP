@@ -38,12 +38,13 @@ Route::group(['middleware' => 'usuarioEstrategico'], function () {
 });
 
 Route::group(['middleware' => 'usuarioTactico'], function () { 
+    Route::resource('credito/competo','CreditoCompletoController');
+    Route::resource('credito/competo','CreditoCompletoController@create');
 
 });
 
-Route::resource('credito/competo','CreditoCompletoController');
 
-//Route::resource('credito/competo','CreditoCompletoController@create');
+
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
