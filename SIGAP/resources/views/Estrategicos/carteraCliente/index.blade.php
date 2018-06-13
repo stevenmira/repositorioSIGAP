@@ -84,53 +84,8 @@
     </div>
   </div>
 
-  <!-- tabla de datos preview-->
-  <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="table-responsive" style="padding: 4px 4px;">
-                <table class="table table-striped table-bordered table-condensed table-hover">
-                    <thead>
-                        <tr class="success">
-                          <th colspan="12">
-                              
-                              <h3 style="text-align: center;"><b>Estados de Cuenta</b><a class="btn btn-success pull-right verde" data-title="Crear Nuevo Estado" href=""><i class="fa fa-fw -square -circle fa-plus-square"></i></a></h3>
-                              
-                          </th>
-                      </tr>
-                        <tr class="info">
-                            
-                            <th>Nombre</th>
-                            <th>apellido</th>
-                            <th>Total</th>
-                            <th>Tipo</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                   @foreach ($cliente as $cl)
-                     
-                      <tr>
-                      
-                         
-                          <td>{{ $cl->nombre}}</td>
-                          <td>{{ $cl->name}}</td>
-                          <td>{{ $cl->name}}</td>
-                         <!-- <td>{{ $es->nit}}</td>
-                          <td>{{ $es->direccion}}</td>-->
-                          <td style="width: 200px;">
+ 
 
-                              <a class="btn btn-warning amarillo" data-title="Consultar datos" href=""><i class="fa fa-eye" aria-hidden="true"></i></a>
-                              <a class="btn btn-info azul" data-title="Editar datos" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                             
-                          </td>
-                      </tr>
-                     
-                  @endforeach
-                </table>
-            </div>
-           
-        </div>
-    </div>
   <br>
   <div class="row">
     <a href="" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
