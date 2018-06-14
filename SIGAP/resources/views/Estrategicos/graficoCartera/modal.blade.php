@@ -14,12 +14,13 @@ role="dialog" tabindex="-1" id="modal-ayuda">
                
 
         <blockquote>
-            <p>Este reporte mostrara los refinanciamientos realizados en un rango de fechas</p>
+            <p>Este reporte mostrara un grafico mensual de alguna cartera en especifico</p>
         </blockquote>
 
         <blockquote>
             <h3>¿Qué veo en la pantalla?</h3>
-            <p>Aqui encontrará el listado de los cuales se clasifican los Ejecutivos.
+            <p>Aqui encontrará un calendario desplegable, por lo que debera seleccionar una fecha en especifico 
+                y una cartera, para generar el grafico de ese mes.
             </p>
             
         </blockquote>

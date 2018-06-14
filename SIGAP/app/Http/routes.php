@@ -38,13 +38,12 @@ Route::group(['middleware' => 'usuarioEstrategico'], function () {
 });
 
 Route::group(['middleware' => 'usuarioTactico'], function () { 
-    Route::resource('credito/competo','CreditoCompletoController');
-    Route::resource('credito/competo','CreditoCompletoController@create');
 
 });
 
+Route::resource('credito/competo','CreditoCompletoController');
 
-
+//Route::resource('credito/competo','CreditoCompletoController@create');
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
@@ -55,9 +54,9 @@ Route::resource('control/refinanciamiento','RefinanciamientoController');
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
-//Route::resource('cartera/clientes','CarteraClienteController');
+Route::resource('cartera/clientes','CarteraClienteController');
 
-Route::resource('cartera/clientes/general','CarteraClienteGeneralController');
+Route::resource('cartera/clientes','CarteraClienteController');
 Route::resource('clasificacion/clientes','ClasificacionClienteController');
 
 //Reportes Gerenciales
@@ -72,3 +71,12 @@ Route::get('reporte8','Reporteria@reporte8');
 Route::get('reporte9','Reporteria@reporte9');
 Route::get('reporte10','Reporteria@reporte10');
 Route::get('reporte11','Reporteria@reporte11');
+
+//Reporte 5 Grafico
+Route::resource('grafico-mensual','GraficoController');
+
+//Reporte 9 Contratos Vencidos
+Route::resource('contrato/vencidos','ContratoVencidoController');
+
+//Reporte 11 Clasificacion de Ejecutivos
+Route::resource('ejecutivo','ClasificacionEjecutivosController');

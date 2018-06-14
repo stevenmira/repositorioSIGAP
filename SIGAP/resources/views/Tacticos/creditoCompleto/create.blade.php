@@ -93,7 +93,7 @@
 
     <a href="" class="btn btn-success btn-md col-md-offset-3" data-target="#modal-delete-1" data-toggle="modal">AYUDA</a>
 
-    @include('Tacticos.carteraCompleta.modal')
+    @include('Tacticos.creditoCompleto.modal')
   </div>
   <br><br>
   {!!Form::close()!!}

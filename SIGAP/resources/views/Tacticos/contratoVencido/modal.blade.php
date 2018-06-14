@@ -8,18 +8,19 @@ role="dialog" tabindex="-1" id="modal-ayuda">
             aria-label="Close">
                  <span aria-hidden="true">×</span>
             </button>
-            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Refinanciamientos </h2 >
+            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Contratos Vencidos por Cartera Clientes </h2 >
                 
 
                
 
         <blockquote>
-            <p>Este reporte mostrara los refinanciamientos realizados en un rango de fechas</p>
+            <p>Este reporte mostrara los contratos vencidos segun cartera de clientes</p>
         </blockquote>
 
         <blockquote>
             <h3>¿Qué veo en la pantalla?</h3>
-            <p>Aqui encontrará el listado de los cuales se clasifican los Ejecutivos.
+            <p>Aqui encontrará un listado de Carteras de Clientes, por lo que debera elegir una cartera y luego
+                dar click en generar reporte para mostrar el listado.
             </p>
             
         </blockquote>
