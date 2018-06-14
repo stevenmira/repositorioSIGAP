@@ -8,18 +8,20 @@ role="dialog" tabindex="-1" id="modal-ayuda">
             aria-label="Close">
                  <span aria-hidden="true">×</span>
             </button>
-            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Refinanciamientos </h2 >
+            <h2 class="modal-title"><i class="fa fa-info-circle"></i> Reporte de Clasificacion de Ejecutivos </h2 >
                 
 
                
 
         <blockquote>
-            <p>Este reporte mostrara los refinanciamientos realizados en un rango de fechas</p>
+            <p>Este reporte mostrara la clasificacion de ejecutivos</p>
         </blockquote>
 
         <blockquote>
             <h3>¿Qué veo en la pantalla?</h3>
-            <p>Aqui encontrará el listado de los cuales se clasifican los Ejecutivos.
+            <p>Aqui encontrará dos calendarios desplegables donde deberá especificar un rango de fecha
+                con el que se elaborará el reporte.
+                Recuerde que la fecha final debe ser mayor a la inicial
             </p>
             
         </blockquote>
