@@ -159,6 +159,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        Marquine\Etl\Providers\Laravel\EtlServiceProvider::class,
 
     ],
 

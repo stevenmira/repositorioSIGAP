@@ -16,6 +16,7 @@
           ASESORES FINANCIEROS MICRO IMPULSADORES DE NEGOCIOS<br>SOCIEDAD ANONIMA DE CAPITAL<br>VARIABLE
         </h4>
   </div>
+ 
 
 <section class="content-header">
   <div class="row">
@@ -84,7 +85,15 @@
     </div>
   </div>
 
- 
+
+
+  @foreach ($cliente as $es)
+
+  <tr>   
+                      <td>{{ $es->nombre}}</td>
+                      <td>{{ $es->apellido}}</td>
+                      </tr>
+                                  @endforeach
 
   <br>
   <div class="row">

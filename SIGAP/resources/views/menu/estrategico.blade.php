@@ -7,7 +7,7 @@
               <ul class="treeview-menu">
                <li><a  href="{{URL::action('CarteraClienteGeneralController@index')}}"><i class="fa fa-circle-o"></i>Carteras de Clientes General</a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Control de Credito</a></li>
-               <li><a  href="{{URL::action('CarteraClienteExtendidoController@create')}}">
+              
                 <i class="fa fa-circle-o"></i>Cartera de Cliente Extendido</a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Refinanciamientos</a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i><small>Grafico Mensual de Cartera de Cliente</small></a></li>
