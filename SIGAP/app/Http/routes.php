@@ -48,15 +48,15 @@ Route::resource('credito/competo','CreditoCompletoController');
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
 
-
+Route::get('home','ETLController@ETL');
 
 //Reportes Estrategicos
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
-Route::resource('cartera/clientes','CarteraClienteController');
+Route::resource('cartera/clientes','CarteraClienteGeneralController');
 
-Route::resource('cartera/clientes','CarteraClienteController');
+
 Route::resource('clasificacion/clientes','ClasificacionClienteController');
 
 //Reportes Gerenciales

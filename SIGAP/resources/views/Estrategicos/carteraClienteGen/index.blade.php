@@ -87,17 +87,11 @@
 
 
 
-  @foreach ($cliente as $es)
-
-  <tr>   
-                      <td>{{ $es->nombre}}</td>
-                      <td>{{ $es->apellido}}</td>
-                      </tr>
-                                  @endforeach
-
+ 
+  
   <br>
   <div class="row">
-    <a href="" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
+    <a href="{{URL::action('CarteraClienteGeneralController@index')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
     <button type="submit" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</button>

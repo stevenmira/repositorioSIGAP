@@ -89,8 +89,8 @@ class AuthController extends Controller
        //funcion que comprueba los prestamos vencidos
        $fecha_actual = Carbon::now();
        $fecha_actual = $fecha_actual->format('Y-m-d');
-      
-         return view('/layouts/inicio')->with("usuarioactual",  $usuarioactual);
+
+       return view('/layouts/inicio')->with("usuarioactual",  $usuarioactual);
        
    
     }

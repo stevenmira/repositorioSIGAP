@@ -5,7 +5,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-               <li><a  href="{{URL::action('CarteraClienteGeneralController@index')}}"><i class="fa fa-circle-o"></i>Carteras de Clientes General</a></li>
+              <li><a  href="{{URL::action('CarteraClienteGeneralController@index')}}"><i class="fa fa-circle-o"></i>Carteras de Clientes General</a></li>
                <li><a  href=""><i class="fa fa-circle-o"></i>Control de Credito</a></li>
               
                 <i class="fa fa-circle-o"></i>Cartera de Cliente Extendido</a></li>
