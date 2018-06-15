@@ -72,9 +72,9 @@ class ETL extends Migration
         Schema::connection('pgsql')->create('cliente', function($table)
         {
 
-            $table->integer('idcliente')->unsigned();
-            $table->index('idcliente');
-            $table->foreign('idcliente')->references('idcliente')->on('cliente')->onDelete('cascade');
+            $table->integer('idcartera')->unsigned();
+            $table->index('idcartera');
+            $table->foreign('idcartera')->references('idcartera')->on('cliente')->onDelete('cascade');
 
             $table->increments('idcliente');
             
