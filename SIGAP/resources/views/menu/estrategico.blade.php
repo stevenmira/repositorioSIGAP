@@ -18,7 +18,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('CarteraClienteExtendidoController@create')}}">
                 <i class="fa fa-file-text"></i> <span>Cartera de Cliente Extendido</span>
               </a>
             </li>

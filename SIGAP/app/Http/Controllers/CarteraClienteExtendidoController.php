@@ -17,16 +17,17 @@ class CarteraClienteExtendidoController extends Controller
 {
     public function create()
     {
-            #$usuarioactual=\Auth::user();
+            $usuarioactual=\Auth::user();
             
             $fecha_actual = Fecha::spanish();
 
-    		return view('Estrategicos.carteraClienteExtendido.create',["fecha_actual"=>$fecha_actual]);
+    		return view('Estrategicos.carteraClienteExtendido.create',["fecha_actual"=>$fecha_actual, 'usuarioactual'=>$usuarioactual]);
 
     }
 
     public function store(CarteraClienteExtendidoFormRequest $request)  
     {
+        $usuarioactual=\Auth::user();
 
         $desde = $request->get('desde');
         $hasta = $request->get('hasta');
@@ -35,7 +36,7 @@ class CarteraClienteExtendidoController extends Controller
 
             Session::flash('msj',"El valor del campo -- FECHA INICIO -- debe ser menor o igual que el valor del campo -- FECHA FIN --");
             $fecha_actual = Fecha::spanish();
-            return view('Estrategicos.carteraClienteExtendido.create',["fecha_actual"=>$fecha_actual]);
+            return view('Estrategicos.carteraClienteExtendido.create',["fecha_actual"=>$fecha_actual, 'usuarioactual'=>$usuarioactual]);
         }
         
         $fecha_actual = Carbon::now();
@@ -44,7 +45,7 @@ class CarteraClienteExtendidoController extends Controller
         $desde = Carbon::parse($desde)->format('d/m/Y');
         $hasta = Carbon::parse($hasta)->format('d/m/Y');
 
-        return view('Estrategicos.carteraClienteExtendido.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta]);
+        return view('Estrategicos.carteraClienteExtendido.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, 'usuarioactual'=>$usuarioactual]);
 
     }
 

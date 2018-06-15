@@ -7,13 +7,13 @@
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="{{URL::action('CarteraClienteController@create')}}">
                 <i class="fa fa-file-text"></i> <span>Cartera de Clientes</span>
                
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="{{URL::action('CreditoCompletoController@create')}}">
                 <i class="fa fa-file-text"></i> <span>Creditos Completo</span>
                 
               </a>
