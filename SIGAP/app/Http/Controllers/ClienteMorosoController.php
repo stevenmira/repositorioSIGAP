@@ -18,7 +18,7 @@ class ClienteMorosoController extends Controller
     {
         if($request)
     	{
-            #$usuarioactual=\Auth::user();
+            $usuarioactual=\Auth::user();
 
             //Obtenemos la fecha de hoy en español usando carbon y array
             $fecha_actual = Fecha::spanish();
@@ -26,7 +26,7 @@ class ClienteMorosoController extends Controller
     		$query = trim($request->get('searchText'));
 
             
-    		return view('Tacticos.clientesMorosos.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query]);
+    		return view('Tacticos.clientesMorosos.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query, "usuarioactual"=>$usuarioactual]);
     	}
     }
 

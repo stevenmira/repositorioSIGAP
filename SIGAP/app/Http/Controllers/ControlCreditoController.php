@@ -1,6 +1,7 @@
 <?php
 
 namespace sigafi\Http\Controllers;
+use sigafi\Http\Requests\ControlCreditoRequest;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class ControlCreditoController extends Controller
     {
         if($request)
     	{
-            #$usuarioactual=\Auth::user();
+            $usuarioactual=\Auth::user();
 
             //Obtenemos la fecha de hoy en español usando carbon y array
             $fecha_actual = Fecha::spanish();
@@ -26,7 +27,7 @@ class ControlCreditoController extends Controller
     		$query = trim($request->get('searchText'));
 
             
-    		return view('Estrategicos.controlDeCredito.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query]);
+    		return view('Estrategicos.controlDeCredito.index',["fecha_actual"=>$fecha_actual,"searchText"=>$query, "usuarioactual"=>$usuarioactual]);
     	}
     }
 
@@ -46,9 +47,22 @@ class ControlCreditoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ControlCreditoRequest $request)
     {
-        //
+        $desde = $request->get('desde');
+        $hasta = $request->get('hasta');
+
+        if ($desde > $hasta) {
+
+            Session::flash('msj',"El valor del campo -- FECHA INICIO -- debe ser menor o igual que el valor del campo -- FECHA FIN --");
+            $fecha_actual = Fecha::spanish();
+            return view('Estrategicos.controlDeCredito.index',["fecha_actual"=>$fecha_actual, "usuarioactual"=>$usuarioactual]);
+        }
+
+        $clientes = DB::table('cliente as cliente')
+        ->select('cliente.nombre','cliente.apellido','cliente.dui')
+
+        
     }
 
     /**
