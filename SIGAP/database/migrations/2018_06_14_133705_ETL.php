@@ -20,6 +20,7 @@ class ETL extends Migration
             $table->increments('idprestamo');
             $table->float('monto')->required();
             $table->float('cuotadiaria')->required();
+            $table->float('estimacion')->required();
             $table->date('fechaultimapago')->nullable();
             $table->timestamps();
         });
