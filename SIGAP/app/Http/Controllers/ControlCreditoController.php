@@ -95,4 +95,12 @@ class ControlCreditoController extends Controller
     {
         //
     }
+
+
+    public function busqueda(Request $request)
+{
+    
 }
+}
+
+
