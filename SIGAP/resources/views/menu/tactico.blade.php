@@ -33,3 +33,8 @@
                 <i class="fa fa-file-text"></i> <span><small>Clasificacion de Ejecutivos</small></span>
               </a>
             </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-file-text"></i> <span><small>Clasificacion de Clientes</small></span>
+              </a>
+            </li>

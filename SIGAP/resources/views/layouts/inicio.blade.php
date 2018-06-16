@@ -121,9 +121,7 @@
                   <div class="row">
                     <div class="col-md-12">
                             <!--Contenido-->
-                            @if($usuarioactual->idtipousuario==1) 
-                            <a href="{{URL::action('ETLController@ETL')}}" class="btn btn-primary btn-md col-md-offset-1"> Proceso ETL</a>
-                            @endif   
+                           
 
                             @yield('contenido')
                         <!--Fin Contenido-->
