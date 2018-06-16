@@ -34,16 +34,15 @@ Route::group(['middleware' => 'usuarioAdmin'], function () {
 
 //VIstas para usuarios tipo EMPLEADO
 Route::group(['middleware' => 'usuarioEstrategico'], function () { 
-
+    Route::resource('cartera/cliente/extendido','CarteraClienteExtendidoController');
 });
 
 Route::group(['middleware' => 'usuarioTactico'], function () { 
-
+    Route::resource('credito/competo','CreditoCompletoController');
+    Route::resource('cartera/cliente/normal','CarteraClienteController');
 });
 
-Route::resource('credito/competo','CreditoCompletoController');
 
-//Route::resource('credito/competo','CreditoCompletoController@create');
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
@@ -62,11 +61,16 @@ Route::resource('clasificacion/clientes','ClasificacionClienteController');
 //Reportes Gerenciales
 Route::get('reporte1','Reporteria@reporte1');
 Route::get('reporte2','Reporteria@reporte2');
-Route::get('reporte3','Reporteria@reporte3');
+
+Route::get('carteraClienteExtendidoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CarteraClienteExtendidoController@carterasClientesExtendidoPDF']);
+
 Route::get('reporte4','Reporteria@reporte4');
 Route::get('reporte5','Reporteria@reporte5');
-Route::get('reporte6','Reporteria@reporte6');
-Route::get('reporte7','Reporteria@reporte7');
+
+Route::get('carteraClienteNormalPDF/{p1}/{p2}', ['as' => 'parametros', 'uses' => 'CarteraClienteController@carteraClientePDF']);
+
+Route::get('creditosCompletosPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@creditoCompletoPDF']);
+
 Route::get('reporte8','Reporteria@reporte8');
 Route::get('reporte9','Reporteria@reporte9');
 Route::get('reporte10','Reporteria@reporte10');

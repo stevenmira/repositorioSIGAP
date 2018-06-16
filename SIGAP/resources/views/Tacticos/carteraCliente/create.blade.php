@@ -27,7 +27,7 @@
   <h1 align="center">REPORTE  DE CARTERA DE CLIENTES</h1>
   <br>
 
-  {!!Form::open(array('url'=>'cartera/cliente','method'=>'POST','autocomplete'=>'off'))!!}
+  {!!Form::open(array('url'=>'cartera/cliente/normal','method'=>'POST','autocomplete'=>'off'))!!}
   {{Form::token()}}
 
   

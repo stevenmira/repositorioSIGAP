@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d491fc0253498e9d88cd6404efb1432",
+    "content-hash": "6d9af15cae4e2fd1f4ccc853553f097b",
     "packages": [
         {
             "name": "arielcr/numero-a-letras",
@@ -320,47 +320,6 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2017-11-26T14:49:08+00:00"
-        },
-        {
-            "name": "flow/jsonpath",
-            "version": "0.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FlowCommunications/JSONPath.git",
-                "reference": "00aa9c361e4d0a210dd95f3c917a1e0dde3a957f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FlowCommunications/JSONPath/zipball/00aa9c361e4d0a210dd95f3c917a1e0dde3a957f",
-                "reference": "00aa9c361e4d0a210dd95f3c917a1e0dde3a957f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "peekmo/jsonpath": "dev-master",
-                "phpunit/phpunit": "^4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Flow\\JSONPath": "src/",
-                    "Flow\\JSONPath\\Test": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stephen Frank",
-                    "email": "stephen@flowsa.com"
-                }
-            ],
-            "description": "JSONPath implementation for parsing, searching and flattening arrays",
-            "time": "2016-09-06T17:43:18+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -841,56 +800,6 @@
             "time": "2018-05-07T08:44:23+00:00"
         },
         {
-            "name": "marquine/php-etl",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leomarquine/php-etl.git",
-                "reference": "4c3cbd2aed8fd170ee8cdf489335a66e26799d9d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leomarquine/php-etl/zipball/4c3cbd2aed8fd170ee8cdf489335a66e26799d9d",
-                "reference": "4c3cbd2aed8fd170ee8cdf489335a66e26799d9d",
-                "shasum": ""
-            },
-            "require": {
-                "flow/jsonpath": "^0.3.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Marquine\\Etl\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Leonardo Marquine",
-                    "email": "leonardomarquine@gmail.com"
-                }
-            ],
-            "description": "Extract, Transform and Load data using PHP.",
-            "keywords": [
-                "data",
-                "etl",
-                "extract",
-                "extraction",
-                "laravel",
-                "load",
-                "seed",
-                "transform",
-                "transformation"
-            ],
-            "time": "2017-08-23T18:43:08+00:00"
-        },
-        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -1014,16 +923,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.29.2",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337"
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ed6aa898982f441ccc9b2acdec51490f2bc5d337",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/863a1a651ea324e1838da3a52753a4239b9d4bea",
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea",
                 "shasum": ""
             },
             "require": {
@@ -1058,7 +967,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-05-29T15:23:46+00:00"
+            "time": "2018-06-15T11:52:26+00:00"
         },
         {
             "name": "nikic/php-parser",

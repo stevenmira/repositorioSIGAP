@@ -56,10 +56,8 @@
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                    <h4>ROL: <?= $usuarioactual->tipo($usuarioactual->idtipousuario); ?></h4>
-                    <p>
-                    Username: {{$usuarioactual->name}}
-                    <small></small>
+                    <h3 style="color: #fff;"><b>{{$usuarioactual->name}}</b></h3>
+                    <p><b> Usuario <?= $usuarioactual->tipo($usuarioactual->idtipousuario); ?></b>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -121,9 +119,7 @@
                   <div class="row">
                     <div class="col-md-12">
                             <!--Contenido-->
-                            @if($usuarioactual->idtipousuario==1) 
-                            <a href="{{URL::action('ETLController@ETL')}}" class="btn btn-primary btn-md col-md-offset-1"> Proceso ETL</a>
-                            @endif   
+                           
 
                             @yield('contenido')
                         <!--Fin Contenido-->
