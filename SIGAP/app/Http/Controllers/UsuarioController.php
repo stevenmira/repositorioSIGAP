@@ -71,7 +71,7 @@ class UsuarioController extends Controller
     {
      $usuario = User::findOrFail($id);
      $data = $request;
-     $usuario->nombre =  $data['nombre'];
+     $usuario->nombre =$data['nombre'];
      $usuario->name=$data['name'];
      $usuario->email=$data['email'];
      $usuario->idtipousuario=$data['idtipousuario'];
