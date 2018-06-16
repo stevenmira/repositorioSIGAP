@@ -24,12 +24,12 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('ContratoVencidoController@index')}}">
                 <i class="fa fa-file-text"></i> <span>Contratos Vencidos</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('ClasificacionEjecutivosController@index')}}">
                 <i class="fa fa-file-text"></i> <span><small>Clasificacion de Ejecutivos</small></span>
               </a>
             </li>

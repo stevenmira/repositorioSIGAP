@@ -64,13 +64,12 @@
 
   <div class="row">
     <div class="form-group col-md-3">
-      <label for="fecha">CARTERA:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="" aria-hidden="true"></i>
-        </div>
-        {!! Form::text('hasta', null, ['class' => 'form-control' ]) !!}
-      </div>
+      <label>CARTERA</label>
+            <select name="idcartera"  class="form-control selectpicker" id="idcliente" data-Live-search="true">
+            @foreach($carteras as $cartera)
+            <option value="{{ $cartera->idcartera }}">{{$cartera->nombre}}</option>
+            @endforeach
+          </select>
     </div>
   </div>
 
