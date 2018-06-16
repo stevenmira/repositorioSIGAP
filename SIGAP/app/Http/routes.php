@@ -61,7 +61,9 @@ Route::resource('clasificacion/clientes','ClasificacionClienteController');
 //Reportes Gerenciales
 Route::get('reporte1','Reporteria@reporte1');
 Route::get('reporte2','Reporteria@reporte2');
-Route::get('reporte3','Reporteria@reporte3');
+
+Route::get('carteraClienteExtendidoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CarteraClienteExtendidoController@carterasClientesExtendidoPDF']);
+
 Route::get('reporte4','Reporteria@reporte4');
 Route::get('reporte5','Reporteria@reporte5');
 
