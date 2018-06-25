@@ -12,7 +12,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+            <a href="{{URL::action('ControlCreditoController@index')}}">
                 <i class="fa fa-file-text"></i> <span>Control de Credito</span>
                 
               </a>
@@ -23,7 +23,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('RefinanciamientoController@index')}}">
                 <i class="fa fa-file-text"></i> <span>Refinanciamientos</span>
               </a>
             </li>
