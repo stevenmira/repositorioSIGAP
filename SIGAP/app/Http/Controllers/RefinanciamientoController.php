@@ -60,12 +60,12 @@ class RefinanciamientoController extends Controller
             return view('Estrategicos.refinanciamiento.index',["fecha_actual"=>$fecha_actual, "usuarioactual"=>$usuarioactual]);
         }
 
-        $clientes = DB::table('cliente as cliente')
+      $clientes = DB::table('cliente as cliente')
         ->select('cliente.nombre','cliente.apellido','negocio.nombre as nombreNegocio',        
-        DB::select('select mora from cuenta where cuenta.idcuenta =prestamo.cuentaanterior'),'prestamo.cuotadiaria','cuenta.interes')
+        'prestamo.cuotadiaria','cta.interes', DB::raw('(select capitalanterior from cuenta where cuenta.idcuenta = prestamo.cuentaanterior) as anterior'), DB::raw('(select mora from cuenta where cuenta.idcuenta = prestamo.cuentaanterior) as mora')  )
         ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
-        ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
-        ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
+        ->join('cuenta as cta','negocio.idnegocio','=','cta.idnegocio')
+        ->join('prestamo as prestamo','cta.idprestamo','=','prestamo.idprestamo')
         
         ->where('prestamo.fecha','>=', $desde)
         ->where('prestamo.fecha','<=', $hasta)
@@ -74,17 +74,18 @@ class RefinanciamientoController extends Controller
         ->get();
 
             $total1=0;
-            
+            $total2=0;
            
             
 
             foreach ($clientes as $cl) {
                 $total1+=$cl->mora;
+                $total2+=$cl->anterior;
                 
                 
             }
 
-        return view('Estrategicos.refinanciamiento.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, "usuarioactual"=>$usuarioactual, "clientes"=>$clientes, "total1"=>$total1]);
+        return view('Estrategicos.refinanciamiento.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, "usuarioactual"=>$usuarioactual, "clientes"=>$clientes, "total1"=>$total1,"total2"=>$total2]);
    
 
     }

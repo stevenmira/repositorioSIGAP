@@ -53,10 +53,10 @@
                   <td style="border: 1px solid #333;">{{$i++}}</td>
                   <td style="border: 1px solid #333;">{{$cc->nombre}} {{$cc->apellido}}</td>
                   <td style="border: 1px solid #333;">{{$cc->nombreNegocio}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->capitalanterior}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->mora}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->cuotadiaria}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->interes}}</td>
+                  <td style="border: 1px solid #333;">${{$cc->anterior}}</td>
+                  <td style="border: 1px solid #333;">${{$cc->mora}}</td>
+                  <td style="border: 1px solid #333;">${{$cc->cuotadiaria}}</td>
+                  <td style="border: 1px solid #333;">{{$cc->interes *100  }}%</td>
               
                   
               </tr>
@@ -65,7 +65,7 @@
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;"><b>TOTAL</b></td>
                   <td style="border: 1px solid #333;"></td>
-                  <td style="border: 1px solid #333;"></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total2}}</b></td>
                   <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total1}}</b></td>
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;"></td>                  
