@@ -17,7 +17,10 @@ class Tipo_Usuario extends Seeder
         ]);
 
         DB::table('tipo_usuario')->insert([
-            'nombre' => 'Estandar',
+            'nombre' => 'Tactico',
+        ]);
+        DB::table('tipo_usuario')->insert([
+            'nombre' => 'Estrategico',
         ]);
     }
 }

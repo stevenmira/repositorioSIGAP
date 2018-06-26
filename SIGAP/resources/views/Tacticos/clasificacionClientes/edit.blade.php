@@ -17,7 +17,7 @@
     <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
   </div>
   
-  <h4 align="center"><b>REPORTE GENERAL DE CARTERA DE CLIENTES</b></h4>
+  <h4 align="center"><b>REPORTE DE CLASIFICO DE CLIENTES</b></h4>
   <br>
   <div class="row form-group">
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
@@ -32,44 +32,28 @@
           <table class="table table-striped table-bordered table-condensed text-centered" style="border: 1px solid #333;">
               <thead>
                 <tr style="border: 1px solid #333;text-align: center;">
-                  <th style="border: 1px solid #333;text-align: center;">Nº</th>
                   <th style="border: 1px solid #333;text-align: center; width: 220px;">CLIENTE/NOMBRE</th>
-                  <th style="border: 1px solid #333;text-align: center;">SALDO CAPITAL</th>
+                  <th style="border: 1px solid #333;text-align: center;">TOTAL CUOTAS ATRASADAS</th>
                   <th style="border: 1px solid #333;text-align: center;">INTERES DIARIO</th>
                   <th style="border: 1px solid #333;text-align: center;">CAPITAL DIARIO</th>
                   <th style="border: 1px solid #333;text-align: center;">TOTAL RECIBIDO DIARIO</th>
-                  <th style="border: 1px solid #333;text-align: center;">#CUOTAS ATRASADAS</th>
-                  <th style="border: 1px solid #333;text-align: center;">PRECIO DE CUOTA</th>
-                  <th style="border: 1px solid #333;text-align: center;">TOTAL CUOTAS ATRASADAS</b></th>
-                </tr>
+                  </tr>
               </thead>
 
-              <?php
-                $sum_saldo_capital=0;
-                $sum_interes_diario=0;
-                $sum_capital_diario=0;
-                $sum_recibo_diario=0;
-                $sum_total_atrasadas=0;
-
-              ?>
               <tbody>
                 @foreach ($consulta as $con)
                 <tr>
                  
                   <td style="border: 1px solid #333;"></td>
 
-                  <td style="border: 1px solid #333;">{{ $con->fechaefectiva }}</td>
+                  <td style="border: 1px solid #333;">{{ $con->nombre }}</td>
                   
-                  <?php $saldo_capital = $con->monto - $con->cuotacapital; ?>
-                  @if($con->monto == null)
+                  
                  
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span></td>
-                  @else
-                  <?php 
-                     $sum_saldo_capital = $sum_saldo_capital + $saldo_capital;
-                  ?>
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{ $saldo_capital }}</td>
-                  @endif
+                 
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{ $con->estad }}</td>
+                 
 
 
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{ $con->interes }}</td>
