@@ -148,7 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        BackupManager\Laravel\Laravel5ServiceProvider::class,
+        
 
         /*
          * Application Service Providers...
