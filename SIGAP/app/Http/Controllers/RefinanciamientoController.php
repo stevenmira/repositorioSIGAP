@@ -79,8 +79,8 @@ class RefinanciamientoController extends Controller
             
 
             foreach ($clientes as $cl) {
-                $total1+=$cl->mora;
-                $total2+=$cl->anterior;
+                $total1+=round($cl->mora,2);
+                $total2+=round($cl->anterior,2);
                 
                 
             }

@@ -53,8 +53,10 @@
                   <td style="border: 1px solid #333;">{{$i++}}</td>
                   <td style="border: 1px solid #333;">{{$cc->nombre}} {{$cc->apellido}}</td>
                   <td style="border: 1px solid #333;">{{$cc->nombreNegocio}}</td>
-                  <td style="border: 1px solid #333;">${{$cc->anterior}}</td>
-                  <td style="border: 1px solid #333;">${{$cc->mora}}</td>
+                  <?php $ant = round($cc->anterior,2) ?>
+                  <td style="border: 1px solid #333;">$ {{$ant}}</td>
+                  <?php $mr = round($cc->mora,2) ?>
+                  <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;">${{$cc->cuotadiaria}}</td>
                   <td style="border: 1px solid #333;">{{$cc->interes *100  }}%</td>
               

@@ -48,7 +48,29 @@ class ClienteMorosoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $desde = $request->get('desde');
+        $hasta = $request->get('hasta');
+        $fecha_actual = Fecha::spanish();
+        $usuarioactual=\Auth::user();
+
+        if ($desde > $hasta) {
+
+            Session::flash('msj',"El valor del campo -- FECHA INICIO -- debe ser menor o igual que el valor del campo -- FECHA FIN --");
+            return view('Estrategicos.refinanciamiento.index',["fecha_actual"=>$fecha_actual, "usuarioactual"=>$usuarioactual]);
+        }
+
+        $clientes = DB::table('cliente as cliente')
+        ->select('cliente.nombre','cliente.apellido')
+        ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
+        ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
+        ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
+        ->join('detalle_liquidacion as detalle_liquidacion','cuenta.idcuenta',"=",'detalle_liquidacion.idcuenta')
+        ->where('prestamo.fecha','>=', $desde)
+        ->where('prestamo.fecha','<=', $hasta)
+        ->get();
+
+
+         return view('Estrategicos.refinanciamiento.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, "usuarioactual"=>$usuarioactual, "clientes"=>$clientes, "total1"=>$total1,"total2"=>$total2]);
     }
 
     /**
