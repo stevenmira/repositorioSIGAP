@@ -65,27 +65,21 @@
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span></td>
                 </tr>
              
-                  <?php 
-                     $sum_interes_diario = $sum_interes_diario + $con->interes; 
-                     $sum_capital_diario = $sum_capital_diario + $con->cuotacapital;
-                     $sum_recibo_diario =  $sum_recibo_diario+  $con->totaldiario;
-                     
-
-                  ?>
+                  
                 @endforeach
                 <tr style="color: black;">
                   <td style="border: 1px solid #333"></td>
                   <td style="border: 1px solid #333"><span><b>TOTAL</b></span></td>
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de Intereses" class="rojo total"> <b>{{ $sum_saldo_capital }}</b></a></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de Intereses" class="rojo total"> <b></b></a></td>
                 
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de Intereses" class="rojo total"> <b>{{$sum_interes_diario}}</b></a></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de Intereses" class="rojo total"> <b></b></a></td>
 
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de cuota capital" class="rojo total"> <b>{{ $sum_capital_diario}}</b></a></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total de cuota capital" class="rojo total"> <b></b></a></td>
 
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total diario" class="rojo total"> <b>{{  $sum_recibo_diario }}</b> </a></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total diario" class="rojo total"> <b></b> </a></td>
                    <td style="border: 1px solid #333"></td>
                   <td style="border: 1px solid #333"></td>
-                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total diario" class="rojo total"> <b>{{  $sum_total_atrasadas }}</b> </a></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total diario" class="rojo total"> <b></b> </a></td>
                 </tr>
               </tbody>
           </table>
