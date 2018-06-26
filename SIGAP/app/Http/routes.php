@@ -35,11 +35,15 @@ Route::group(['middleware' => 'usuarioAdmin'], function () {
 //VIstas para usuarios tipo EMPLEADO
 Route::group(['middleware' => 'usuarioEstrategico'], function () { 
     Route::resource('cartera/cliente/extendido','CarteraClienteExtendidoController');
+    Route::resource('cartera/clientes/general','CarteraClienteGeneralController');
+    
 });
 
 Route::group(['middleware' => 'usuarioTactico'], function () { 
     Route::resource('credito/competo','CreditoCompletoController');
     Route::resource('cartera/cliente/normal','CarteraClienteController');
+    Route::resource('clasificacion/clientes','ClasificacionClienteController');
+
 });
 
 
@@ -53,7 +57,6 @@ Route::get('home','ETLController@ETL');
 Route::resource('control/clienteMoroso','ClienteMorosoController');
 Route::resource('control/credito','ControlCreditoController');
 
-Route::resource('cartera/clientes','CarteraClienteGeneralController');
 
 
 Route::resource('clasificacion/clientes','ClasificacionClienteController');

@@ -6,7 +6,7 @@
               </a>
             </li>
             <li>
-              <a href="{{URL::action('CarteraClienteGeneralController@index')}}">
+              <a href="{{URL::action('CarteraClienteGeneralController@create')}}">
                 <i class="fa fa-file-text"></i> <span>Carteras de Clientes General</span>
                
               </a>

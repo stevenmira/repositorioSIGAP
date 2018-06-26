@@ -24,10 +24,10 @@
   </div>
   <br>
 
-  <h1 align="center">REPORTE GENERAL DE CARTERA DE CLIENTES</h1>
+  <h1 align="center">REPORTE CLASIFICACIÓN DE CLIENTES</h1>
   <br>
 
-  {!!Form::open(array('url'=>'cartera/clientes/general','method'=>'POST','autocomplete'=>'off'))!!}
+  {!!Form::open(array('url'=>'clasificacion/clientes','method'=>'POST','autocomplete'=>'off'))!!}
   {{Form::token()}}
 
   
@@ -75,26 +75,6 @@
         </div>
     </div>
 
-    <div class="form-group col-xs-3 col-md-3">
-      <label for="fecha">FECHA INICIO:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-        </div>
-        {!! Form::date('desde', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
-      </div>
-    </div>
-
-    <div class="form-group col-xs-3 col-md-3">
-      <label for="fecha">FECHA FIN:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-calendar  " aria-hidden="true"></i>
-        </div>
-        {!! Form::date('hasta', null, ['class' => 'form-control' ]) !!}
-      </div>
-    </div>
- 
 </div>
 
   <br>
@@ -106,7 +86,7 @@
 
     <a href="" class="btn btn-success btn-md col-md-offset-3" data-target="#modal-delete-1" data-toggle="modal">AYUDA</a>
 
-    @include('Estrategicos.carteraClienteGen.modal')
+    @include('Tacticos.clasificacionClientes.modal')
   </div>
   <br><br>
   {!!Form::close()!!}

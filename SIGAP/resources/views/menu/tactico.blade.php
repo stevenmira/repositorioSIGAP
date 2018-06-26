@@ -34,7 +34,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('ClasificacionClienteController@create')}}">
                 <i class="fa fa-file-text"></i> <span><small>Clasificacion de Clientes</small></span>
               </a>
             </li>
