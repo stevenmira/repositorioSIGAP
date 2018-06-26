@@ -37,7 +37,7 @@
               <thead>
                 <tr>
                     <th style="border: 1px solid #333;" width="75px">N</th>
-                    <th style="border: 1px solid #333;" width="75px">NOMBRE DEL CLIENTE</th>
+                    <th style="border: 1px solid #333;" width="225px">NOMBRE DEL CLIENTE</th>
                     <th style="border: 1px solid #333;" width="225px">NEGOCIO</th>
                     <th style="border: 1px solid #333;" width="225px">SALDO CAPITAL ANTERIOR</th>
                     <th style="border: 1px solid #333;" width="100px">MORA</th>
@@ -56,7 +56,7 @@
                   <?php $ant = round($cc->anterior,2) ?>
                   <td style="border: 1px solid #333;">$ {{$ant}}</td>
                   <?php $mr = round($cc->mora,2) ?>
-                  <td style="border: 1px solid #333;"></td>
+                  <td style="border: 1px solid #333;">{{$mr}}</td>
                   <td style="border: 1px solid #333;">${{$cc->cuotadiaria}}</td>
                   <td style="border: 1px solid #333;">{{$cc->interes *100  }}%</td>
               
