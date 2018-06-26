@@ -39,15 +39,39 @@
 
               <tr>
                   <td style="border: 1px solid #333;">1</td>
-                  <td style="border: 1px solid #333;">Tepecoyo</td>
-                  <td style="border: 1px solid #333;">2500</td>
-                  <td style="border: 1px solid #333;">$. 1500</td>
+                  <td style="border: 1px solid #333;">TEPECOYO</td>
+                  <td style="border: 1px solid #333;" align="right"> 7500</td>
+                  <td style="border: 1px solid #333;" align="right"> 3000</td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid #333;">2</td>
+                  <td style="border: 1px solid #333;">SANTA TECLA</td>
+                  <td style="border: 1px solid #333;" align="right"> 11000</td>
+                  <td style="border: 1px solid #333;" align="right"> 7900</td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid #333;">3</td>
+                  <td style="border: 1px solid #333;">ATEOS</td>
+                  <td style="border: 1px solid #333;" align="right"> 2500</td>
+                  <td style="border: 1px solid #333;" align="right"> 600</td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid #333;">4</td>
+                  <td style="border: 1px solid #333;">SACACOYO</td>
+                  <td style="border: 1px solid #333;" align="right"> 8500</td>
+                  <td style="border: 1px solid #333;" align="right"> 4000</td>
+              </tr>
+              <tr>
+                  <td style="border: 1px solid #333;">5</td>
+                  <td style="border: 1px solid #333;">LOURDES</td>
+                  <td style="border: 1px solid #333;" align="right"> 5500</td>
+                  <td style="border: 1px solid #333;" align="right"> 1000</td>
               </tr>
               <tr>
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;"><b>TOTAL</b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> tot 1</b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> tot 2</b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> 35000</b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> 16000</b></td>
               </tr>
           </table>
       </div>
@@ -60,7 +84,7 @@
     <a href="{{URL::action('CarteraClienteExtendidoController@create')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <button type="submit" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</button>
+    <a href="{{ url('carteraClienteExtendidoPDF', ['p1' => $desde, 'p2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
 
   </div>
   <br><br>

@@ -62,14 +62,15 @@ class ControlCreditoController extends Controller
         }
 
         $clientes = DB::table('cartera as cartera')
-            ->select('prestamo.fecha', 'cliente.nombre', 'cliente.apellido','cliente.dui' ,
-                'prestamo.monto','prestamo.montooriginal','cuenta.interes','cartera.nombre as nombreCartera')
+            ->select('prestamo.fecha', 'cliente.nombre', 'cliente.apellido','cliente.dui' ,'prestamo.monto','prestamo.montooriginal','prestamo.estado','prestamo.estadodos','cuenta.interes','cartera.nombre as nombreCartera')
             ->join('cliente as cliente','cartera.idcartera','=','cliente.idcartera')
             ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
             ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
             ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
             ->where('prestamo.fecha','>=', $desde)
             ->where('prestamo.fecha','<=', $hasta)
+            ->where('prestamo.estado','=','COMPLETO')
+            ->where('prestamo.estadodos','=','ACTIVO')
             ->get();
 
             $total1=0;

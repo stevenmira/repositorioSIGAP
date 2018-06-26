@@ -42,11 +42,34 @@ class CarteraClienteExtendidoController extends Controller
         $fecha_actual = Carbon::now();
         $fecha_actual = $fecha_actual->format('d-m-Y');
 
-        $desde = Carbon::parse($desde)->format('d/m/Y');
-        $hasta = Carbon::parse($hasta)->format('d/m/Y');
+        $desde = Carbon::parse($desde)->format('d-m-Y');
+        $hasta = Carbon::parse($hasta)->format('d-m-Y');
 
         return view('Estrategicos.carteraClienteExtendido.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, 'usuarioactual'=>$usuarioactual]);
 
+    }
+
+    public function carterasClientesExtendidoPDF($f1, $f2){
+
+        $fecha_actual = Carbon::now();
+        $fecha_actual = $fecha_actual->format('d-m-Y');
+
+        $desde = Carbon::parse($f1)->format('d-m-Y');
+        $hasta = Carbon::parse($f2)->format('d-m-Y');
+
+        $name = "CarteraClienteExtendidoPDF";
+        $vistaurl= "reportes/carteraClienteExtendido";
+
+        return $this -> carteraClienteExtendidoReporte($vistaurl, $name, $fecha_actual, $desde, $hasta);
+    }
+
+    public function carteraClienteExtendidoReporte($vistaurl, $name, $fecha_actual, $desde, $hasta){
+        
+        $view=\View::make($vistaurl,compact('vistaurl', 'name', 'fecha_actual', 'desde', 'hasta'))->render();
+        $pdf =\App::make('dompdf.wrapper');
+
+        $pdf->loadHTML($view);
+        return $pdf->stream($name);
     }
 
 

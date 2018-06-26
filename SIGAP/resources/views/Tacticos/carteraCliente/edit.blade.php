@@ -121,7 +121,7 @@
     <a href="{{URL::action('CarteraClienteController@create')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <a href="{{ url('carteraClienteNormalPDF', ['p1' => $cartera->idcartera, 'p2' => $fecha]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</a>
+    <a href="{{ url('carteraClienteNormalPDF', ['p1' => $cartera->idcartera, 'p2' => $fecha]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
 
   </div>
   <br><br>
