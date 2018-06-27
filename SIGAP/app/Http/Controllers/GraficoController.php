@@ -36,12 +36,14 @@ class GraficoController extends Controller
 
         $ini = $request->get('desde');
         $fin = $request->get('hasta');
-        $fecha_actual = Fecha::spanish();
+        $fecha_actual = Carbon::now();
+        $fecha_actual = $fecha_actual->format('d-m-Y');
+        
         $idcart = $request->get('car');
 
         $carteras = DB::table('cartera')->orderby('cartera.nombre','asc')->get();
 
-
+        $cartera = DB::table('cartera')->where('cartera.idcartera','=',$idcart)->first();
 
         $consulta = DB::select("select cuenta.montocapital, cuenta.mora as mora,
             (SELECT SUM(cuenta.mora) FROM cuenta WHERE cuenta.estado='INACTIVO') as mor,
@@ -53,7 +55,7 @@ class GraficoController extends Controller
             WHERE cliente.idcartera = cartera.idcartera AND negocio.idcliente = cliente.idcliente AND cuenta.idnegocio = negocio.idnegocio AND detalle_liquidacion.idcuenta = cuenta.idcuenta AND cuenta.idcuenta = ?
             GROUP BY cuenta.montocapital, cuenta.mora;",[$idcart]);
 
-        return view('Estrategicos.graficoCartera.show',["ini"=>$ini,"fin"=>$fin,"consulta"=>$consulta,"carteras"=>$carteras,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
+        return view('Estrategicos.graficoCartera.show',["carte"=>$cartera,"ini"=>$ini,"fin"=>$fin,"consulta"=>$consulta,"carteras"=>$carteras,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
     }
 
 }

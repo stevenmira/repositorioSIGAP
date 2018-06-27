@@ -14,7 +14,7 @@
 
 <section class="content-header">
   <div class="row">
-    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
+    <p align="right">Fecha de emision: {{$fecha_actual}}</p>
   </div>
   
   <h4 align="center"><b>CONSOLIDADO DE CARTERA</b></h4>
@@ -28,6 +28,9 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="table-responsive">
+      	<div align="text-right">Nombre Cartera: {{$carte->nombre}}</div>
+      	<div align="right">Ejecutivo: {{$carte->ejecutivo}}</div>
+
           <table class="table table-striped table-bordered table-condensed text-centered"  style="border-collapse: collapse; " style="border: 1px solid #333;">
               <thead>
                 <tr style="border: 1px solid #333;text-align: center;">
@@ -64,7 +67,7 @@
     <a href="{{URL::action('GraficoController@index')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <a href="#" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
+    <a href="{{ url('reporte5', ['p1' => $carte->idcartera ]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
 
   </div>
 

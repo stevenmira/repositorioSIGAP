@@ -63,12 +63,33 @@ class Reporteria extends Controller
         return $pdf->stream($nombre.".pdf");
         
     }
-    public function reporte5(Request $request) {
+    public function reporte5($idcart) {
         
         $vistaurl = "gerencial.reporte5";
 
         $nombre = "Reporte5";
-        $view=\View::make($vistaurl)->render();
+
+        $fecha_actual = Carbon::now();
+        $fecha_actual = $fecha_actual->format('d-m-Y');
+        
+        
+
+        $carteras = DB::table('cartera')->orderby('cartera.nombre','asc')->get();
+
+        $cartera = DB::table('cartera')->where('cartera.idcartera','=',$idcart)->first();
+
+        $consulta = DB::select("select cuenta.montocapital, cuenta.mora as mora,
+            (SELECT SUM(cuenta.mora) FROM cuenta WHERE cuenta.estado='INACTIVO') as mor,
+            (SELECT SUM(cuenta.montocapital) FROM cuenta WHERE cuenta.estado='ACTIVO') as montocap,
+            (SELECT SUM(detalle_liquidacion.cuotacapital) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as capital,
+            (SELECT SUM(detalle_liquidacion.totaldiario) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as total,
+            (SELECT SUM(detalle_liquidacion.interes) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as interes
+            FROM cliente, cartera, negocio, cuenta, detalle_liquidacion
+            WHERE cliente.idcartera = cartera.idcartera AND negocio.idcliente = cliente.idcliente AND cuenta.idnegocio = negocio.idnegocio AND detalle_liquidacion.idcuenta = cuenta.idcuenta AND cuenta.idcuenta = ?
+            GROUP BY cuenta.montocapital, cuenta.mora;",[$idcart]);
+
+
+        $view=\View::make($vistaurl, compact('fecha_actual','cartera','consulta'))->render();
         $pdf =\App::make('dompdf.wrapper');
 
         $pdf->loadHTML($view);

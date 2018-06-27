@@ -24,7 +24,7 @@
   </div>
   <br>
 
-  <h1 align="center">GRAFICO MENSUAL DE CARTERA</h1>
+  <h1 align="center">CONSOLIDADO DE CARTERA</h1>
   <br>
 
   {!!Form::open(array('url'=>'grafico-mensual','method'=>'POST','autocomplete'=>'off'))!!}
@@ -63,25 +63,6 @@
   <br>
 
   <div class="row">
-    <div class="form-group col-md-3">
-      <label for="fecha">FECHA INICIO:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-        </div>
-        {!! Form::date('desde', null, ['class' => 'form-control' , 'autofocus'=>'on','required']) !!}
-      </div>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="fecha">FECHA FIN:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-        </div>
-        {!! Form::date('hasta', null, ['class' => 'form-control' , 'autofocus'=>'on','required']) !!}
-      </div>
-    </div>
-    <br><br><br><br><br>
     <div class="form-group col-md-3">
       <label>CARTERA</label>
             <select name="car"  class="form-control selectpicker" id="car" data-Live-search="true">

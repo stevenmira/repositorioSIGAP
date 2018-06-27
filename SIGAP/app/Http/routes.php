@@ -71,7 +71,7 @@ Route::get('reporte2','Reporteria@reporte2');
 Route::get('carteraClienteExtendidoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CarteraClienteExtendidoController@carterasClientesExtendidoPDF']);
 
 Route::get('reporte4','Reporteria@reporte4');
-Route::get('reporte5','Reporteria@reporte5');
+Route::get('reporte5/{p1}','Reporteria@reporte5');
 
 Route::get('carteraClienteNormalPDF/{p1}/{p2}', ['as' => 'parametros', 'uses' => 'CarteraClienteController@carteraClientePDF']);
 
