@@ -64,13 +64,13 @@
 
   <div class="row">
     <div class="form-group col-md-3">
-      <label for="fecha">CLASIFICACION:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="" aria-hidden="true"></i>
-        </div>
-        {!! Form::text('desde', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
-      </div>
+      <label>CLASIFICACION</label>
+            <select name="ida"  class="form-control selectpicker" id="ida" data-Live-search="true">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
     </div>
   </div>
 

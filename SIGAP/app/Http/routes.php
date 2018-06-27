@@ -80,7 +80,7 @@ Route::get('carteraGeneralClientePDF/{p1}/{p2}/{P3}', ['as' => 'parametros', 'us
 Route::get('clasificacionClientePDF/{p1}/{p2}', ['as' => 'parametros', 'uses' => 'ClasificacionClienteController@clasificacionClientePDF']);
 
 Route::get('reporte8','Reporteria@reporte8');
-Route::get('reporte9','Reporteria@reporte9');
+Route::get('reporte9/{p1}','Reporteria@reporte9');
 Route::get('reporte10','Reporteria@reporte10');
 Route::get('reporte11','Reporteria@reporte11');
 

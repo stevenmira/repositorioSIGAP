@@ -21,11 +21,7 @@
   <br>
   <div class="row form-group">
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha:</b>&nbsp;&nbsp;&nbsp; {{$fecha}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Ejecutivo:</b>&nbsp;&nbsp;&nbsp; José Castro</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Supervisor:</b>&nbsp;&nbsp;&nbsp; Pedro Lopéz</p>
   </div>
-
 
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -50,30 +46,29 @@
               ?>
               <tbody>
                 @foreach ($consulta as $con)
-                <?php
-                $fecha_actual = $fecha_actual->format('d-m-Y');
-                $anio = explode("-", $fecha_actual);
-                $mes = explode("-", $fecha_actual);
-                $dia = explode("-", $fecha_actual);
-                $fechaven = $con->fechaultimapaga->format('d-m-Y');
-                if () {
-                    
-                }  
                 <tr>
                   <td style="border: 1px solid #333;">{{$i+1}}</td>
-                  <td style="border: 1px solid #333;">{{$con->nombre}} {{$co->apellido}}</td>
-                  <td style="border: 1px solid #333;">{{$con->montocapital}}</td>
+                  <td style="border: 1px solid #333;">{{$con->nomcli}} {{$con->ape}}</td>
                   <td style="border: 1px solid #333;">{{$con->monto}}</td>
-                  <td style="border: 1px solid #333;">{{$con->nombreNegocio}}</td>
-                  <td style="border: 1px solid #333;">{{$con->fechaultimapaga}}</td>
-                  <td style="border: 1px solid #333;">{{$con->totalpendiente}}</td>
+                  <td style="border: 1px solid #333;">{{$con->monto - $con->deuda}}</td>
+                  <td style="border: 1px solid #333;">{{$con->negono}}</td>
+                  <td style="border: 1px solid #333;">{{$con->fecha}}</td>
+                  <td style="border: 1px solid #333;">{{$con->deuda}}</td>
                 </tr>
-                ?>
+                
                  @endforeach
               </tbody>
           </table>
       </div>
     </div>
+  </div>
+
+  <div class="row">
+    <a href="{{URL::action('ContratoVencidoController@index')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
+    
+    <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
+    <a href="{{ url('reporte9', ['p1' => $cartera->idcartera]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
+
   </div>
 
 

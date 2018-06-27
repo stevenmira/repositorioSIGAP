@@ -22,7 +22,8 @@ class RefinanciamientoController extends Controller
             $usuarioactual=\Auth::user();
 
             //Obtenemos la fecha de hoy en español usando carbon y array
-            $fecha_actual = Fecha::spanish();
+            $fecha_actual = Carbon::now();
+            $fecha_actual = $fecha_actual->format('d-m-Y');
             
     		$query = trim($request->get('searchText'));
 
@@ -51,7 +52,10 @@ class RefinanciamientoController extends Controller
     {
         $desde = $request->get('desde');
         $hasta = $request->get('hasta');
-        $fecha_actual = Fecha::spanish();
+        $fecha_actual = Carbon::now();
+        $fecha_actual = $fecha_actual->format('d-m-Y');
+        $desde=Carbon::parse($desde)->format('d-m-Y');
+        $hasta=Carbon::parse($hasta)->format('d-m-Y');
         $usuarioactual=\Auth::user();
 
         if ($desde > $hasta) {

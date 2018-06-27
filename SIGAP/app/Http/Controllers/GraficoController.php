@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use sigafi\Http\Requests;
 use sigafi\Fecha;
 
+use Carbon\Carbon;
+
+use DB;
+
 class GraficoController extends Controller
 {
     public function index(Request $request)
@@ -19,9 +23,10 @@ class GraficoController extends Controller
             $fecha_actual = Fecha::spanish();
             
     		$query = trim($request->get('searchText'));
+            $carteras = DB::table('cartera')->orderby('cartera.nombre','asc')->get();
 
             
-    		return view('Estrategicos.graficoCartera.index',["fecha_actual"=>$fecha_actual, "searchText"=>$query, "usuarioactual"=>$usuarioactual]);
+    		return view('Estrategicos.graficoCartera.index',["carteras"=>$carteras,"fecha_actual"=>$fecha_actual, "searchText"=>$query, "usuarioactual"=>$usuarioactual]);
     	}
     }
 }
