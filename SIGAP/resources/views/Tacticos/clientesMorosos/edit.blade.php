@@ -70,7 +70,7 @@
                   <td style="border: 1px solid #333;"><b>TOTAL</b></td>
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span>{{$total1}} </b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span>${{$total3}} </b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span>{{$total3}} </b></td>
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;">$ {{$total2}}</td>
                   <td style="border: 1px solid #333;"></td>                  
