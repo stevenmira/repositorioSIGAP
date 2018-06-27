@@ -65,7 +65,7 @@
                   <td style="border: 1px solid #333;"><b><span>TOTAL</b></span></td>
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{$sumaMonto}}</td>
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>
-                  $ {{$sumaMora}}</td>
+                  {{$sumaMora}}</td>
               </tr>
           </table>
       </div>
