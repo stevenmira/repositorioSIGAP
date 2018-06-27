@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <div class="form-group col-xs-3 col-md-3">
+    <div class="form-group col-xs-3 col-md-3 col-md-offset-1">
       <label for="fecha">FECHA FIN:</label>
       <div class="input-group">
         <div class="input-group-addon">
