@@ -47,7 +47,7 @@
                     <th style="border: 1px solid #333;" width="200px">CARTERA</th>
                 </tr>
               </thead>
-              <?php $i=0?>
+              <?php $i=1?>
               <?php $b=0?>
               @foreach ($clientes as $cc)
               <tr>
@@ -55,12 +55,15 @@
                   <td style="border: 1px solid #333;">{{$cc->nombre}} {{$cc->apellido}}</td>
                   <td style="border: 1px solid #333;">{{$cc->dui}}</td>
                   <td style="border: 1px solid #333;">{{$cc->fecha}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->monto}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->interes}}</td>
-                  <td style="border: 1px solid #333;">{{$b = $cc->monto * $cc->interes}}</td>
-                  <td style="border: 1px solid #333;">{{$cc->montooriginal}}</td>
+                  <?php $b=round($cc->monto,2) ?>
+                  <td style="border: 1px solid #333;">$ {{$b}}</td>
+                  <td style="border: 1px solid #333;">{{$cc->interes *100}}%</td>
+                  <?php $c=round(($cc->monto * $cc->interes),2) ?>
+                  <td style="border: 1px solid #333;">$ {{$c}}</td>
+                  <?php $d=round($cc->montooriginal,2) ?>
+                  <td style="border: 1px solid #333;">$ {{$d}}</td>
                   <td style="border: 1px solid #333;">{{$cc->nombreCartera}}</td>
-                  <?php $b+=$b?>
+                  
               </tr>
               @endforeach
               <tr>
@@ -70,7 +73,7 @@
                   <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total1}}</b></td>
                   <td style="border: 1px solid #333;"></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$b}}</b></td>
+                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total3}}</b></td>
                   <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> {{$total2}}</b></td>
                   <td style="border: 1px solid #333;"></td>
 
@@ -89,7 +92,7 @@
     <a href="{{URL::action('ControlCreditoController@index')}}"  class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <a href="{{ url('creditosCompletosPDF', ['id' => $desde, 'id2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</a>
+    <a href="{{ url('controlCreditoPDF', ['p1' => $desde, 'p2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
 
   </div>
   <br><br>

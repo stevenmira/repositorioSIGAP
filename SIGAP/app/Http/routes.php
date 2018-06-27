@@ -50,12 +50,15 @@ Route::group(['middleware' => 'usuarioTactico'], function () {
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
+Route::get('refinanciamientoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'RefinanciamientoController@refinanciamientoPDF']);
 
 Route::get('home','ETLController@ETL');
 
 //Reportes Estrategicos
 Route::resource('control/clienteMoroso','ClienteMorosoController');
+Route::get('clienteMorosoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'ClienteMorosoController@clienteMorosoPDF']);
 Route::resource('control/credito','ControlCreditoController');
+Route::get('controlCreditoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'ControlCreditoController@controlCreditoPDF']);
 
 
 
@@ -73,6 +76,8 @@ Route::get('reporte5','Reporteria@reporte5');
 Route::get('carteraClienteNormalPDF/{p1}/{p2}', ['as' => 'parametros', 'uses' => 'CarteraClienteController@carteraClientePDF']);
 
 Route::get('creditosCompletosPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@creditoCompletoPDF']);
+Route::get('carteraGeneralClientePDF/{p1}/{p2}/{P3}', ['as' => 'parametros', 'uses' => 'CarteraClienteGeneralController@carteraClienteGenPDF']);
+Route::get('clasificacionClientePDF/{p1}/{p2}', ['as' => 'parametros', 'uses' => 'ClasificacionClienteController@clasificacionClientePDF']);
 
 Route::get('reporte8','Reporteria@reporte8');
 Route::get('reporte9/{p1}','Reporteria@reporte9');

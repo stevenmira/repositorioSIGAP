@@ -14,7 +14,7 @@
 
 <section class="content-header">
   <div class="row">
-    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
+    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">Fecha de Emision:{{$fecha_actual}}</p>
   </div>
   
   <h4 align="center"><b>REPORTE DE CLIENTES MOROSOS</b></h4>
@@ -84,10 +84,10 @@
 
   <br>
   <div class="row">
-    <a href="{{URL::action('RefinanciamientoController@index')}}"  class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
+    <a href="{{URL::action('ClienteMorosoController@index')}}"  class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <a href="{{ url('creditosCompletosPDF', ['id' => $desde, 'id2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3">GENERAR REPORTE</a>
+    <a href="{{ url('clienteMorosoPDF', ['p1' => $desde, 'p2' => $hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
 
   </div>
   <br><br>

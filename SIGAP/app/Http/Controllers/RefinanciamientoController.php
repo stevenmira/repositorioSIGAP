@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use sigafi\Http\Requests;
 use sigafi\Fecha;
 use DB;
+use Carbon\Carbon;
 class RefinanciamientoController extends Controller
 {
     /**
@@ -133,5 +134,53 @@ class RefinanciamientoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function refinanciamientoPDF($desde,$hasta)
+    {
+         $clientes = DB::table('cliente as cliente')
+        ->select('cliente.nombre','cliente.apellido','negocio.nombre as nombreNegocio',        
+        'prestamo.cuotadiaria','cta.interes', DB::raw('(select capitalanterior from cuenta where cuenta.idcuenta = prestamo.cuentaanterior) as anterior'), DB::raw('(select mora from cuenta where cuenta.idcuenta = prestamo.cuentaanterior) as mora')  )
+        ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
+        ->join('cuenta as cta','negocio.idnegocio','=','cta.idnegocio')
+        ->join('prestamo as prestamo','cta.idprestamo','=','prestamo.idprestamo')
+        
+        ->where('prestamo.fecha','>=', $desde)
+        ->where('prestamo.fecha','<=', $hasta)
+        ->where('prestamo.estado','=','REFINANCIAMIENTO')
+        ->where('prestamo.estadodos','=','ACTIVO')
+        ->get();
+
+            $total1=0;
+            $total2=0;
+           
+            
+
+            foreach ($clientes as $cl) {
+                $total1+=round($cl->mora,2);
+                $total2+=round($cl->anterior,2);
+                
+                
+            }
+
+
+            $fecha_actual = Carbon::now();
+            $fecha_actual = $fecha_actual->format('d-m-Y');
+
+            $name = "refinanciamientoPDF";
+            $vistaurl = "reportes/refinanciamiento";
+
+
+            return $this -> refinanciamientoReporte($vistaurl,$name,$clientes,$total1,$total2,$fecha_actual,$desde,$hasta);
+    }
+
+
+    public function refinanciamientoReporte($vistaurl,$name,$clientes,$total1,$total2,$fecha_actual,$desde,$hasta)
+    {
+        $view=\View::make($vistaurl,compact('vistaurl','name','clientes','total1','total2','fecha_actual','desde','hasta'))->render();
+        $pdf =\App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream($name);
     }
 }

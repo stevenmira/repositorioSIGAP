@@ -1,40 +1,68 @@
-@extends ('layouts.inicio')
-@section('contenido')
-<section class="content-header">
-  <div class="row text-right">
-    <img  src="{{asset('img/log.jpg')}}" width="150px" height="60px">
-  </div>
-</section>
-  <div class="row">
-        <h4 align="center"> <b>AFIMID, S.A. DE C.V.</b></h4>
-        <h4 colspan="2" align="center">
-          ASESORES FINANCIEROS MICRO IMPULSADORES DE NEGOCIOS<br>SOCIEDAD ANONIMA DE CAPITAL<br>VARIABLE
-        </h4>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reporte General de Cartera de Clientes</title>
+	<style type="text/css">
+		@page{
+			margin-top: 7.0mm;
+            margin-left: 7.0mm;
+            margin-right: 7.0mm;
+            margin-bottom: 7.0mm;
 
-<section class="content-header">
-  <div class="row">
-    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
-  </div>
-  
-  <h4 align="center"><b>REPORTE GENERAL DE CARTERA DE CLIENTES</b></h4>
-  <br>
-  <div class="row form-group">
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha Inicio:</b>&nbsp;&nbsp;&nbsp; {{$desde}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha Fin:</b>&nbsp;&nbsp;&nbsp; {{$hasta}}</p>
-    <!--<p class="col-md-3 col-lg-3 col-sm-3"><b>Ejecutivo:</b>&nbsp;&nbsp;&nbsp; José Castro</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Supervisor:</b>&nbsp;&nbsp;&nbsp; Pedro Lopéz</p>-->
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="table-responsive">
-          <table class="table table-striped table-bordered table-condensed text-centered" style="border: 1px solid #333;">
-              <thead>
+		}
+		span{
+			font-size: 11px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table>
+			<tr>
+				<th style="width: 500px;" align="center" valign="bottom">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFIMID, S.A. DE C.V.
+				</th>
+				<td>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	<img src="img/log.jpg" width="180px" height="70px">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">ASESORES FINANCIEROS MICRO IMPULSADORES DE NEGOCIOS<br>SOCIEDAD ANONIMA DE CAPITAL<br>VARIABLE</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<div style="width: 100%">
+		<table style="width: 100%">
+			<tr>				
+				<td align="right">
+        <b>Fecha Emisión:</b>	{{$fecha_actual}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<div><h4 align="center"><b>REPORTE GENERAL DE CARTERA DE CLIENTES</b></h4></div>
+	<div> 
+		<p style="font-size: 14px;" align="left">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Cartera</b> {{$cartera->nombre}} 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Fecha Inicio:</b> {{$desde}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Fecha Fin:</b> {{$hasta}}
+			<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Ejecutivo:</b> {{$cartera->ejecutivo}}
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Supervisor:</b> {{$cartera->supervisor}}-->
+		</p>
+    </div>
+	<div>
+		<table align="center" style="width: 90%; border-collapse: collapse;">
+			<thead>
                 <tr style="border: 1px solid #333;text-align: center;">
-                  <th style="border: 1px solid #333;text-align: center;">Nº</th>
-                  <th style="border: 1px solid #333;text-align: center; width: 220px;">CLIENTE/NOMBRE</th>
+                <th style="border: 1px solid #333;text-align: center;">Nº</th>
+                  <th style="border: 1px solid #333;text-align: center; width: 220px;">FECHA</th>
                   <th style="border: 1px solid #333;text-align: center;">SALDO CAPITAL</th>
                   <th style="border: 1px solid #333;text-align: center;">INTERES DIARIO</th>
                   <th style="border: 1px solid #333;text-align: center;">CAPITAL DIARIO</th>
@@ -48,9 +76,12 @@
                 $sum_capital_diario=0;
                 $sum_recibo_diario=0;
                 $sum_total_atrasadas=0;
+
                 $n=0;
+
+                $i=0;
               ?>
-              <tbody>
+             <tbody>
                 @foreach ($consulta as $con)
                 <tr>
                 <?php $n=$n+1?>
@@ -96,22 +127,7 @@
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span><a style="color: black;" href="#" data-title="Total diario" class="rojo total"> <b>{{  $sum_recibo_diario }}</b> </a></td>
                   </tr>
               </tbody>
-          </table>
-      </div>
-    </div>
-  </div>
-
-
-  <br>
-  <div class="row">
-    <a href="{{URL::action('CarteraClienteController@create')}}" class="btn btn-primary btn-md col-md-offset-1">ATRAS</a>
-    
-    <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
-    <a href="{{ url('carteraGeneralClientePDF', ['p1' =>$cartera->idcartera, 'p2' => $desde,'p3'=>$hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
-
-  </div>
-  <br><br>
-  
-
-</section>
-@endsection
+		</table>
+	</div>
+</body>
+</html>
