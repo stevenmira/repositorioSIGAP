@@ -52,7 +52,7 @@ class ClienteMorosoController extends Controller
     {
         $desde = $request->get('desde');
         $hasta = $request->get('hasta');
-        $fecha_actual = Fecha::spanish();
+       
         $usuarioactual=\Auth::user();
 
         if ($desde > $hasta) {
@@ -91,8 +91,10 @@ group by c.nombre,c.apellido,n.nombre,p.monto,cc.idcuenta, ca.nombre;",[$desde,$
                 
                 
             }
-
-
+            $desde=Carbon::parse($desde)->format('d-m-Y');
+            $hasta=Carbon::parse($hasta)->format('d-m-Y');
+            $fecha_actual = Carbon::now();
+            $fecha_actual = $fecha_actual->format('d-m-Y');
          return view('Tacticos.clientesMorosos.edit',["fecha_actual"=>$fecha_actual,"desde"=>$desde, "hasta"=>$hasta, "usuarioactual"=>$usuarioactual, "clientes"=>$clientes,"total1"=>$total1,"total2"=>$total2,"total3"=>$total3]);
     }
 

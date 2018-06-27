@@ -55,13 +55,13 @@
 		</p>
     </div>
 	<div>
-		<table align="center" style="width: 70%; border-collapse: collapse;">
+		<table align="center" style="width: 90%; border-collapse: collapse;">
             <thead>
                 <tr style="border: 1px solid #333;text-align: center;">
                 <th style="border: 1px solid #333;text-align: center;">Nº</th>
-                  <th style="border: 1px solid #333;text-align: center; width: 220px;">NEGOCIO/NOMBRE</th>
-                  <th style="border: 1px solid #333;text-align: center; width: 220px;">NOMBRE/APELLIDO</th>
-                  <th style="border: 1px solid #333;text-align: center;">TOTAL CUOTAS ATRASADAS</th>
+                  <th style="border: 1px solid #333;text-align: center; width: 190px;">NEGOCIO</th>
+                  <th style="border: 1px solid #333;text-align: center; width: 190px;">NOMBRE</th>
+                  <th style="border: 1px solid #333;text-align: center;">CUOTAS ATRASADAS</th>
                   <th style="border: 1px solid #333;text-align: center;">PRESTAMO VENCIDO</th>
                   <th style="border: 1px solid #333;text-align: center;">CLASIFICACIÓN</th>
                 </tr>
@@ -78,7 +78,7 @@
                  <?php $n=$n+1?>
                   <td style="border: 1px solid #333;">{{ $n }}</td>
                   <td style="border: 1px solid #333;">{{$con->nnegocio}}</td>
-                  <td style="border: 1px solid #333;">{{$con->nombre}}</td>             
+                  <td style="border: 1px solid #333;">{{$con->nombre}} {{$con->apellido}}</td>             
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>{{$con->estado}}</td>
                   @if($con->estadodos=='VENCIDO'&& $con->estado<=8)
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>Sí</td>                

@@ -14,7 +14,7 @@
 
 <section class="content-header">
   <div class="row">
-    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
+    <p class="col-md-4 col-lg-4 col-sm-4 col-lg-offset-10 col-md-offset-9"><b>Fecha Emision: </b>{{$fecha_actual}}</p>
   </div>
   
   <h4 align="center"><b>REPORTE DE CARTERA DE CLIENTES</b></h4>
@@ -22,8 +22,6 @@
   <div class="row form-group">
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha:</b>&nbsp;&nbsp;&nbsp; {{$fecha}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Ejecutivo:</b>&nbsp;&nbsp;&nbsp; José Castro</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Supervisor:</b>&nbsp;&nbsp;&nbsp; Pedro Lopéz</p>
   </div>
 
   <div class="row">
