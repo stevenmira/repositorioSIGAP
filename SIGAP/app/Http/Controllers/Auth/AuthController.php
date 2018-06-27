@@ -90,7 +90,7 @@ class AuthController extends Controller
        $fecha_actual = Carbon::now();
        $fecha_actual = $fecha_actual->format('Y-m-d');
 
-       return view('/layouts/inicio')->with("usuarioactual",  $usuarioactual);
+       return view('/principio')->with("usuarioactual",  $usuarioactual);
        
    
     }
