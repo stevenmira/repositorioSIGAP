@@ -19,8 +19,8 @@
 
 <section class="content-header">
   <div class="row">
-    <p class="col-md-4 col-lg-4 col-sm-4"><b>Fecha de emision:</b> {{$fecha_actual}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3 col-md-offset-5"><b>Usuario:</b> Juan Pérez</p>
+    <!--<p class="col-md-4 col-lg-4 col-sm-4"><b>Fecha de emision:</b> {{$fecha_actual}}</p>-->
+    <p class="col-md-3 col-lg-3 col-sm-3 col-md-offset-9"><b>Usuario:</b> {{$usuarioactual->nombre}} </p>
   </div>
   <br>
 
