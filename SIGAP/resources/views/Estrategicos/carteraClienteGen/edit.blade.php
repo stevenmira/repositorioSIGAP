@@ -34,7 +34,7 @@
               <thead>
                 <tr style="border: 1px solid #333;text-align: center;">
                   <th style="border: 1px solid #333;text-align: center;">Nº</th>
-                  <th style="border: 1px solid #333;text-align: center; width: 220px;">CLIENTE/NOMBRE</th>
+                  <th style="border: 1px solid #333;text-align: center; width: 220px;">FECHA</th>
                   <th style="border: 1px solid #333;text-align: center;">SALDO CAPITAL</th>
                   <th style="border: 1px solid #333;text-align: center;">INTERES DIARIO</th>
                   <th style="border: 1px solid #333;text-align: center;">CAPITAL DIARIO</th>
@@ -104,7 +104,7 @@
 
   <br>
   <div class="row">
-    <a href="{{URL::action('CarteraClienteController@create')}}" class="btn btn-primary btn-md col-md-offset-1">ATRAS</a>
+    <a href="{{URL::action('CarteraClienteGeneralController@create')}}" class="btn btn-primary btn-md col-md-offset-1">ATRAS</a>
     
     <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
     <a href="{{ url('carteraGeneralClientePDF', ['p1' =>$cartera->idcartera, 'p2' => $desde,'p3'=>$hasta]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
