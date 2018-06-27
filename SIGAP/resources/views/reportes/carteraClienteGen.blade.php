@@ -61,7 +61,7 @@
 		<table align="center" style="width: 90%; border-collapse: collapse;">
 			<thead>
                 <tr style="border: 1px solid #333;text-align: center;">
-                <th style="border: 1px solid #333;text-align: center;">Nº</th>
+                  <th style="border: 1px solid #333;text-align: center;">Nº</th>
                   <th style="border: 1px solid #333;text-align: center; width: 220px;">FECHA</th>
                   <th style="border: 1px solid #333;text-align: center;">SALDO CAPITAL</th>
                   <th style="border: 1px solid #333;text-align: center;">INTERES DIARIO</th>

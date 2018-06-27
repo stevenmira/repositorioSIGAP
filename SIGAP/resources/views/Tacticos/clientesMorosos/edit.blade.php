@@ -14,7 +14,7 @@
 
 <section class="content-header">
   <div class="row">
-    <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">Fecha de Emision:{{$fecha_actual}}</p>
+  <p class="col-md-4 col-lg-4 col-sm-4 col-lg-offset-9 col-md-offset-9"><b>Fecha Emision: </b>{{$fecha_actual}}</p>
   </div>
   
   <h4 align="center"><b>REPORTE DE CLIENTES MOROSOS</b></h4>

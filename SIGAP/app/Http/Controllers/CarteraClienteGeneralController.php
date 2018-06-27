@@ -33,6 +33,11 @@ class CarteraClienteGeneralController extends Controller
         $hasta = $request->get('hasta');
         $idcartera = $request->get('idcartera');
         $fecha = $request->get('fecha');
+        if ($desde > $hasta) {
+
+            Session::flash('msj',"El valor del campo -- FECHA INICIO -- debe ser menor o igual que el valor del campo -- FECHA FIN --");
+            return view('Estrategicos.carteraClienteGen.create',["fecha_actual"=>$fecha_actual, "carteras"=>$carteras, "usuarioactual"=>$usuarioactual]);
+        }
 
        /* $consulta = DB::table('cartera as cartera')
             ->select('cuenta.idcuenta','cartera.idcartera',DB::raw('SUM(detalle_liquidacion.interes) as interes' ),'detalle_liquidacion.cuotacapital' , 'detalle_liquidacion.totaldiario','detalle_liquidacion.monto' , 'prestamo.cuotadiaria', 'detalle_liquidacion.fechadiaria' , 'detalle_liquidacion.fechaefectiva')
