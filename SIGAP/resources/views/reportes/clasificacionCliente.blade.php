@@ -80,13 +80,23 @@
                   <td style="border: 1px solid #333;">{{$con->nnegocio}}</td>
                   <td style="border: 1px solid #333;">{{$con->nombre}} {{$con->apellido}}</td>             
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>{{$con->estado}}</td>
-                  @if($con->estadodos=='VENCIDO'&& $con->estado<=8)
+                  @if($con->estadodos=='VENCIDO'&& $con->estado<=2)
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>Sí</td>                
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>C</td>
+                
                   @endif
-                  @if($con->estadodos=='ACTIVO')
+                  @if($con->estadodos=='VENCIDO'&& $con->estado>2)
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>Sí</td>                
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>D</td>
+                
+                  @endif
+                  @if($con->estadodos=='ACTIVO' && $con->estado<=2)
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>NO</td> 
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>A</td>
+                  @endif
+                  @if($con->estadodos=='ACTIVO' && $con->estado>2)
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>NO</td>                
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;</span>B</td>
                   @endif
                   
                  </tr>  
