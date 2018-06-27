@@ -75,7 +75,7 @@ Route::get('carteraClienteNormalPDF/{p1}/{p2}', ['as' => 'parametros', 'uses' =>
 Route::get('creditosCompletosPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'CreditoCompletoController@creditoCompletoPDF']);
 
 Route::get('reporte8','Reporteria@reporte8');
-Route::get('reporte9','Reporteria@reporte9');
+Route::get('reporte9/{p1}','Reporteria@reporte9');
 Route::get('reporte10','Reporteria@reporte10');
 Route::get('reporte11','Reporteria@reporte11');
 

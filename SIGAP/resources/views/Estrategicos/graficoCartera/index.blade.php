@@ -74,13 +74,12 @@
     </div>
     <br><br><br><br><br>
     <div class="form-group col-md-3">
-      <label for="fecha">Cartera:</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
-        </div>
-        {!! Form::text('desde', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
-      </div>
+      <label>CARTERA</label>
+            <select name="idcartera"  class="form-control selectpicker" id="idcliente" data-Live-search="true">
+            @foreach($carteras as $cartera)
+            <option value="{{ $cartera->idcartera }}">{{$cartera->nombre}}</option>
+            @endforeach
+      </select>
     </div>
 
   </div>
