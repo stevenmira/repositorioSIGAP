@@ -56,8 +56,8 @@ class CarteraClienteExtendidoController extends Controller
         $sumaMonto = 0;
         $sumaMora = 0;
         foreach ($carteraExtendido as $ca) {
-                  $sumaMonto = $sumaMonto + $ca->monto;
-                  $sumaMora = $sumaMora + $ca->mora;
+                  $sumaMonto = round($sumaMonto + $ca->monto,2);
+                  $sumaMora = round($sumaMora + $ca->mora,2);
               }      
 
         $fecha_actual = Carbon::now();
@@ -103,8 +103,8 @@ class CarteraClienteExtendidoController extends Controller
         $sumaMonto = 0;
         $sumaMora = 0;
         foreach ($carteraExtendido as $ca) {
-                  $sumaMonto = $sumaMonto + $ca->monto;
-                  $sumaMora = $sumaMora + $ca->mora;
+                  $sumaMonto = round($sumaMonto + $ca->monto,2);
+                  $sumaMora = round($sumaMora + $ca->mora,2);
               } 
         
         $view=\View::make($vistaurl,compact('vistaurl', 'name', 'carteraExtendido', 'sumaMonto', 'sumaMora', 'fecha_actual', 'desde', 'hasta'))->render();

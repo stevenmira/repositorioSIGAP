@@ -35,7 +35,7 @@
                   <th style="border: 1px solid #333;text-align: center; width: 220px;">EJECUTIVO</th>
                   <th style="border: 1px solid #333;text-align: center;">CARTERA ASIGNADA</th>
                   <th style="border: 1px solid #333;text-align: center;">CANTIDAD DE CLIENTES</th>
-                  <th style="border: 1px solid #333;text-align: center;">SALDO ACTUAL</th>
+                  <th style="border: 1px solid #333;text-align: center;">CANTIDAD DE PAGOS</th>
                   <th style="border: 1px solid #333;text-align: center;">CLASIFICACION</th>
                 </tr>
               </thead>
@@ -49,21 +49,62 @@
                 $ran = rand ( 3 , 16 );
               ?>
               <tbody>
-                @foreach ($carteras as $ca)
-
+                @foreach ($consulta as $ca)
+                @if ($ca->nom > 50 && $ide='A')
                 <tr>
                   <td style="border: 1px solid #333;">{{$i+1}}</td>
-                  <td style="border: 1px solid #333;">{{$ca->ejecutivo}}</td>
-                  <td style="border: 1px solid #333;">{{$ca->nombre}}</td>
-                  <td style="border: 1px solid #333;">{{$ran}}</td>
-                  <td style="border: 1px solid #333;">${{$run}}</td>
-                  <td style="border: 1px solid #333;">{{$ide}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->eje}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nome}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nom}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->mon}}</td>
+                  <td style="border: 1px solid #333;">A</td>
                 </tr>
-                 @endforeach
+                @else
+                @if ($ca->nom > 30 && $ca->nom <= 50 && $ide='B')
+                <tr>
+                  <td style="border: 1px solid #333;">{{$i+1}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->eje}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nome}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nom}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->mon}}</td>
+                  <td style="border: 1px solid #333;">B</td>
+                </tr>
+                @else
+                @if ($ca->nom > 20 && $ca->nom <= 30 && $ide='C')
+                <tr>
+                  <td style="border: 1px solid #333;">{{$i+1}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->eje}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nome}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nom}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->mon}}</td>
+                  <td style="border: 1px solid #333;">C</td>
+                </tr>
+                @else
+                @if ($ca->nom <= 20 && $ide='D')
+                <tr>
+                  <td style="border: 1px solid #333;">{{$i+1}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->eje}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nome}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->nom}}</td>
+                  <td style="border: 1px solid #333;">{{$ca->mon}}</td>
+                  <td style="border: 1px solid #333;">D</td>
+                </tr>
+                @endif
+                @endif
+                @endif
+                @endif
+              @endforeach
               </tbody>
           </table>
       </div>
     </div>
+  </div>
+<div class="row">
+    <a href="{{URL::action('ClasificacionEjecutivosController@index')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
+    
+    <input name="_token" value="{{csrf_token()}}" type="hidden"></input>
+    <a href="{{ url('reporte10', ['p1' => $ide ]) }}" target="_blank" class="btn btn-danger btn-md col-md-offset-3"><i class="fa fa-print"> IMPRIMIR</i></a>
+
   </div>
 
 

@@ -64,7 +64,7 @@
 
   <div class="row">
     <div class="form-group col-md-3">
-      <label for="fecha">FECHA:</label>
+      <label for="fecha">FECHA INICIO:</label>
       <div class="input-group">
         <div class="input-group-addon">
           <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -72,10 +72,19 @@
         {!! Form::date('desde', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
       </div>
     </div>
+    <div class="form-group col-md-3">
+      <label for="fecha">FECHA FIN:</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+        {!! Form::date('hasta', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
+      </div>
+    </div>
     <br><br><br><br><br>
     <div class="form-group col-md-3">
       <label>CARTERA</label>
-            <select name="idcartera"  class="form-control selectpicker" id="idcliente" data-Live-search="true">
+            <select name="car"  class="form-control selectpicker" id="car" data-Live-search="true">
             @foreach($carteras as $cartera)
             <option value="{{ $cartera->idcartera }}">{{$cartera->nombre}}</option>
             @endforeach
