@@ -44,15 +44,17 @@
                     <td style="border: 1px solid #333;">{{ $con->nombre }}</td>
 
                     @if( $con->monto != null)
-                    <td style="border: 1px solid #333;" align="right">{{ $con->monto }}</td>
+                    <?php $b=round($con->monto,2) ?>
+                    <td style="border: 1px solid #333;" align="right">$ {{ $b}}</td>
                     @else
-                    <td style="border: 1px solid #333;" align="right">0</td>
+                    <td style="border: 1px solid #333;" align="right">$ 0</td>
                     @endif
 
                     @if( $con->mora != null)
-                    <td style="border: 1px solid #333;" align="right">{{ $con->mora }}</td>
+                    <?php $c=round($con->mora,2) ?>
+                    <td style="border: 1px solid #333;" align="right">$ {{ $c }}</td>
                     @else
-                    <td style="border: 1px solid #333;" align="right">0</td>
+                    <td style="border: 1px solid #333;" align="right">$ 0</td>
                     @endif
                 </tr>
                 <?php $cont = $cont + 1; ?>
@@ -63,7 +65,7 @@
                   <td style="border: 1px solid #333;"><b><span>TOTAL</b></span></td>
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{$sumaMonto}}</td>
                   <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>
-                  {{$sumaMora}}</td>
+                  $ {{$sumaMora}}</td>
               </tr>
           </table>
       </div>

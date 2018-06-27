@@ -66,15 +66,17 @@
                   <td style="border: 1px solid #333;"><span>{{ $con->nombre }}</span></td>
 
                   @if( $con->monto != null)
-                  <td style="border: 1px solid #333;" align="right"><span> {{ $con->monto }}</span></td>
+				  <?php $b=round($con->monto,2) ?>
+                  <td style="border: 1px solid #333;" align="right"><span>$ {{ $b }}</span></td>
                   @else
-                  <td style="border: 1px solid #333;" align="right"><span> 0</span></td>
+                  <td style="border: 1px solid #333;" align="right"><span>$ 0</span></td>
                   @endif
 
                   @if( $con->mora != null)
-                  <td style="border: 1px solid #333;" align="right"><span> {{ $con->mora }}</span></td>
+				  <?php $c=round($con->mora,2) ?>
+                  <td style="border: 1px solid #333;" align="right"><span>$ {{ $c }}</span></td>
                   @else
-                  <td style="border: 1px solid #333;" align="right"><span> 0</span></td>
+                  <td style="border: 1px solid #333;" align="right"><span>$ 0</span></td>
                   @endif
               </tr>
               <?php $cont = $cont + 1; ?>
