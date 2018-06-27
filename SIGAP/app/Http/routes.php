@@ -81,7 +81,7 @@ Route::get('clasificacionClientePDF/{p1}/{p2}', ['as' => 'parametros', 'uses' =>
 
 Route::get('reporte8','Reporteria@reporte8');
 Route::get('reporte9/{p1}','Reporteria@reporte9');
-Route::get('reporte10','Reporteria@reporte10');
+Route::get('reporte10/{p1}','Reporteria@reporte10');
 Route::get('reporte11','Reporteria@reporte11');
 
 //Reporte 5 Grafico
