@@ -18,7 +18,8 @@ class ETLController extends Controller
         DB::table('cliente')->delete();
         DB::table('cartera')->delete();
        
-        foreach ($cartera as $cartera) { 
+        foreach ($cartera as $cartera) 
+        { 
     
             DB::connection('pgsql')->table('cartera')->insert(
                 ['idcartera' => $cartera->idcartera, 'nombre' =>$cartera->nombre,
@@ -27,8 +28,8 @@ class ETLController extends Controller
                 'updated_at'=>$cartera->updated_at]
             );
             DB::commit();
-        
-    }
+
+        }
 
     foreach ($cliente as $cliente) { 
     

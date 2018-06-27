@@ -19,7 +19,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{URL::action('ClienteMorosoController@index')}}">
                 <i class="fa fa-file-text"></i> <span>Clientes Morosos</span>
               </a>
             </li>

@@ -50,12 +50,15 @@ Route::group(['middleware' => 'usuarioTactico'], function () {
 
 
 Route::resource('control/refinanciamiento','RefinanciamientoController');
+Route::get('refinanciamientoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'RefinanciamientoController@refinanciamientoPDF']);
 
 Route::get('home','ETLController@ETL');
 
 //Reportes Estrategicos
 Route::resource('control/clienteMoroso','ClienteMorosoController');
+Route::get('clienteMorosoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'ClienteMorosoController@clienteMorosoPDF']);
 Route::resource('control/credito','ControlCreditoController');
+Route::get('controlCreditoPDF/{f1}/{f2}', ['as' => 'fechas', 'uses' => 'ControlCreditoController@controlCreditoPDF']);
 
 
 

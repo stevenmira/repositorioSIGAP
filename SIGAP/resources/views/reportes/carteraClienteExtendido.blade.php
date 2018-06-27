@@ -59,41 +59,31 @@
                 <th style="border: 1px solid #333;" width="150px"><span>SALDO CAPITAL</span></th>
                 <th style="border: 1px solid #333;" width="150px"><span>MORA</span></th>
 			</tr>
+			<?php $cont = 1;?>
+			@foreach ($carteraExtendido as $con)
               <tr>
-                  <td style="border: 1px solid #333;"><span>1</span></td>
-                  <td style="border: 1px solid #333;"><span>TEPECOYO</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 7500</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 3000</span></td>
+                  <td style="border: 1px solid #333;"><span>{{$cont}}</span></td>
+                  <td style="border: 1px solid #333;"><span>{{ $con->nombre }}</span></td>
+
+                  @if( $con->monto != null)
+                  <td style="border: 1px solid #333;" align="right"><span> {{ $con->monto }}</span></td>
+                  @else
+                  <td style="border: 1px solid #333;" align="right"><span> 0</span></td>
+                  @endif
+
+                  @if( $con->mora != null)
+                  <td style="border: 1px solid #333;" align="right"><span> {{ $con->mora }}</span></td>
+                  @else
+                  <td style="border: 1px solid #333;" align="right"><span> 0</span></td>
+                  @endif
               </tr>
-              <tr>
-                  <td style="border: 1px solid #333;"><span>2</span></td>
-                  <td style="border: 1px solid #333;"><span>SANTA TECLA</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 11000</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 7900</span></td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;"><span>3</span></td>
-                  <td style="border: 1px solid #333;"><span>ATEOS</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 2500</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 600</span></td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;"><span>4</span></td>
-                  <td style="border: 1px solid #333;"><span>SACACOYO</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 8500</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 4000</span></td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;"><span>5</span></td>
-                  <td style="border: 1px solid #333;"><span>LOURDES</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 5500</span></td>
-                  <td style="border: 1px solid #333;" align="right"><span> 1000</span></td>
-              </tr>
+              <?php $cont = $cont + 1; ?>
+            @endforeach
               <tr>
               	  <td style="border: 1px solid #333;"></td>
                   <td style="border: 1px solid #333;"><b><span>TOTAL</b></span></td>
-                  <td style="border: 1px solid #333; text-align: right;"><span><b> $&nbsp;&nbsp;&nbsp; 35000</b></span></td>
-                  <td style="border: 1px solid #333; text-align: right;"><span><b> $&nbsp;&nbsp;&nbsp; 16500</b></span></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span><b> $&nbsp;&nbsp;&nbsp; {{$sumaMonto}}</b></span></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span><b> $&nbsp;&nbsp;&nbsp; {{$sumaMora}}</b></span></td>
               </tr>
 		</table>
 	</div>

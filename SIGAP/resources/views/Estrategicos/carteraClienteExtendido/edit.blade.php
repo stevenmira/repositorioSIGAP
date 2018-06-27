@@ -37,41 +37,33 @@
                 </tr>
               </thead>
 
-              <tr>
-                  <td style="border: 1px solid #333;">1</td>
-                  <td style="border: 1px solid #333;">TEPECOYO</td>
-                  <td style="border: 1px solid #333;" align="right"> 7500</td>
-                  <td style="border: 1px solid #333;" align="right"> 3000</td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;">2</td>
-                  <td style="border: 1px solid #333;">SANTA TECLA</td>
-                  <td style="border: 1px solid #333;" align="right"> 11000</td>
-                  <td style="border: 1px solid #333;" align="right"> 7900</td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;">3</td>
-                  <td style="border: 1px solid #333;">ATEOS</td>
-                  <td style="border: 1px solid #333;" align="right"> 2500</td>
-                  <td style="border: 1px solid #333;" align="right"> 600</td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;">4</td>
-                  <td style="border: 1px solid #333;">SACACOYO</td>
-                  <td style="border: 1px solid #333;" align="right"> 8500</td>
-                  <td style="border: 1px solid #333;" align="right"> 4000</td>
-              </tr>
-              <tr>
-                  <td style="border: 1px solid #333;">5</td>
-                  <td style="border: 1px solid #333;">LOURDES</td>
-                  <td style="border: 1px solid #333;" align="right"> 5500</td>
-                  <td style="border: 1px solid #333;" align="right"> 1000</td>
-              </tr>
+              <?php $cont = 1;?>
+              @foreach ($carteraExtendido as $con)
+                <tr>
+                    <td style="border: 1px solid #333;">{{$cont}}</td>
+                    <td style="border: 1px solid #333;">{{ $con->nombre }}</td>
+
+                    @if( $con->monto != null)
+                    <td style="border: 1px solid #333;" align="right">{{ $con->monto }}</td>
+                    @else
+                    <td style="border: 1px solid #333;" align="right">0</td>
+                    @endif
+
+                    @if( $con->mora != null)
+                    <td style="border: 1px solid #333;" align="right">{{ $con->mora }}</td>
+                    @else
+                    <td style="border: 1px solid #333;" align="right">0</td>
+                    @endif
+                </tr>
+                <?php $cont = $cont + 1; ?>
+              @endforeach
+
               <tr>
                   <td style="border: 1px solid #333;"></td>
-                  <td style="border: 1px solid #333;"><b>TOTAL</b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> 35000</b></td>
-                  <td style="border: 1px solid #333; text-align: right;"><b><span class="pull-left">&nbsp;$</span> 16000</b></td>
+                  <td style="border: 1px solid #333;"><b><span>TOTAL</b></span></td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>{{$sumaMonto}}</td>
+                  <td style="border: 1px solid #333; text-align: right;"><span class="pull-left">&nbsp;$</span>
+                  {{$sumaMora}}</td>
               </tr>
           </table>
       </div>
