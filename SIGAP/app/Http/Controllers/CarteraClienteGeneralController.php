@@ -65,7 +65,8 @@ class CarteraClienteGeneralController extends Controller
             ->orderBy('detalle_liquidacion.fechaefectiva','ASC')
             ->get();
 
-        
+        $desde=Carbon::parse($desde)->format('d-m-Y');
+        $hasta=Carbon::parse($hasta)->format('d-m-Y');
         $fecha_actual = Carbon::now();
         $fecha_actual = $fecha_actual->format('d-m-Y');
 
@@ -73,46 +74,44 @@ class CarteraClienteGeneralController extends Controller
         $cartera = DB::table('cartera')->where('cartera.idcartera','=',$idcartera)->first();
 
 
-        return view('Estrategicos.carteraClienteGen.edit',["fecha_actual"=>$fecha_actual,"fecha"=>$fecha, "cartera"=>$cartera,  "consulta"=>$consulta, "usuarioactual"=>$usuarioactual]);
+        return view('Estrategicos.carteraClienteGen.edit',["desde"=>$desde,"hasta"=>$hasta,"fecha_actual"=>$fecha_actual,"fecha"=>$fecha, "cartera"=>$cartera,  "consulta"=>$consulta, "usuarioactual"=>$usuarioactual]);
  }
 
-    public function creditoCompletoPDF($f1, $f2){
+    public function carteraClienteGenPDF($idcartera, $desde,$hasta){
 
-        $creditosCompletos = DB::table('cartera as cartera')
-            ->select('prestamo.fecha', 'cliente.nombre', 'cliente.apellido', 'negocio.nombre as nombreNegocio',
-                'prestamo.monto','prestamo.cuotadiaria','cartera.nombre as nombreCartera')
-            ->join('cliente as cliente','cartera.idcartera','=','cliente.idcartera')
-            ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
-            ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
-            ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
-            ->where('prestamo.fecha','>=', $f1)
-            ->where('prestamo.fecha','<=', $f2)
-            ->get();
+        $consulta = DB::table('cartera as cartera')
+        ->select(DB::raw('SUM(detalle_liquidacion.interes) as interes' ),DB::raw('SUM(detalle_liquidacion.cuotacapital) as cuotacapital') , DB::raw('SUM(detalle_liquidacion.totaldiario) as totaldiario'),DB::raw('SUM(detalle_liquidacion.monto) as monto ') , DB::raw('SUM(prestamo.cuotadiaria) as cuotadiaria'),'detalle_liquidacion.fechaefectiva')
+        ->join('cliente as cliente','cartera.idcartera','=','cliente.idcartera')
+        ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
+        ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
+        ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
+        ->join('detalle_liquidacion as detalle_liquidacion','cuenta.idcuenta','=','detalle_liquidacion.idcuenta')
+        ->where('cartera.idcartera', '=', $idcartera)
+        ->where('detalle_liquidacion.fechaefectiva','>=', $desde)
+        ->where('detalle_liquidacion.fechaefectiva','<=', $hasta)
+        //->where('cuenta.estado','=','ACTIVO')
+        //->SUM('detalle_liquidacion.interes','detalle_liquidacion.cuotacapital' , 'detalle_liquidacion.totaldiario','detalle_liquidacion.monto', 'prestamo.cuotadiaria')
+        ->groupBy('detalle_liquidacion.fechaefectiva')
+        ->orderBy('detalle_liquidacion.fechaefectiva','ASC')
+        ->get();
 
-        $total1 = 0;
-        $total2 = 0;
-        foreach ($creditosCompletos as $cc) {
-            $total1 = $total1 + $cc->monto;
-            $total2 = $total2 + $cc->cuotadiaria;
-        }
+    $desde=Carbon::parse($desde)->format('d-m-Y');
+    $hasta=Carbon::parse($hasta)->format('d-m-Y');
+    $fecha_actual = Carbon::now();
+    $fecha_actual = $fecha_actual->format('d-m-Y');
 
-            
-        
-        $fecha_actual = Carbon::now();
-        $fecha_actual = $fecha_actual->format('d-m-Y');
+    //$fecha = Carbon::parse($fecha)->format('d-m-Y');
+    $cartera = DB::table('cartera')->where('cartera.idcartera','=',$idcartera)->first();
 
-        $desde = Carbon::parse($f1)->format('d-m-Y');
-        $hasta = Carbon::parse($f2)->format('d-m-Y');
+    $name = "CarteraClienteGenPDF";
+    $vistaurl= "reportes/carteraClienteGen";
 
-        $name = "CreditoCompletoPDF";
-        $vistaurl= "reportes/creditoCompleto";
-
-        return $this -> creditoCompletoReporte($vistaurl, $name, $creditosCompletos, $total1, $total2, $fecha_actual, $desde, $hasta);
+        return $this -> carteraGeneralReporte($vistaurl, $name, $consulta, $fecha_actual, $desde, $hasta,$cartera);
     }
 
-    public function creditoCompletoReporte($vistaurl, $name, $creditosCompletos, $total1, $total2, $fecha_actual, $desde, $hasta){
+    public function carteraGeneralReporte($vistaurl, $name, $consulta, $fecha_actual, $desde, $hasta,$cartera){
         
-        $view=\View::make($vistaurl,compact('vistaurl', 'name', 'creditosCompletos', 'total1', 'total2', 'fecha_actual', 'desde', 'hasta'))->render();
+        $view=\View::make($vistaurl,compact('vistaurl', 'name', 'consulta', 'fecha_actual', 'desde','hasta', 'cartera'))->render();
         $pdf =\App::make('dompdf.wrapper');
 
         $pdf->loadHTML($view);
