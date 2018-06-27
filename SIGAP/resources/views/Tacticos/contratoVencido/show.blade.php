@@ -17,7 +17,7 @@
     <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
   </div>
   
-  <h4 align="center"><b>REPORTE DE CARTERA DE CLIENTES</b></h4>
+  <h4 align="center"><b>REPORTE DE CONTRATOS VENCIDOS</b></h4>
   <br>
   <div class="row form-group">
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
@@ -49,11 +49,11 @@
                 <tr>
                   <td style="border: 1px solid #333;">{{$i+1}}</td>
                   <td style="border: 1px solid #333;">{{$con->nomcli}} {{$con->ape}}</td>
-                  <td style="border: 1px solid #333;">{{$con->monto}}</td>
-                  <td style="border: 1px solid #333;">{{$con->monto - $con->deuda}}</td>
+                  <td style="border: 1px solid #333;">${{$con->monto}}</td>
+                  <td style="border: 1px solid #333;">${{$con->monto - $con->deuda}}</td>
                   <td style="border: 1px solid #333;">{{$con->negono}}</td>
                   <td style="border: 1px solid #333;">{{$con->fecha}}</td>
-                  <td style="border: 1px solid #333;">{{$con->deuda}}</td>
+                  <td style="border: 1px solid #333;">${{$con->deuda}}</td>
                 </tr>
                 
                  @endforeach

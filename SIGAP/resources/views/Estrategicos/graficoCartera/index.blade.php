@@ -69,7 +69,7 @@
         <div class="input-group-addon">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
-        {!! Form::date('desde', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
+        {!! Form::date('desde', null, ['class' => 'form-control' , 'autofocus'=>'on','required']) !!}
       </div>
     </div>
     <div class="form-group col-md-3">
@@ -78,7 +78,7 @@
         <div class="input-group-addon">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
-        {!! Form::date('hasta', null, ['class' => 'form-control' , 'autofocus'=>'on']) !!}
+        {!! Form::date('hasta', null, ['class' => 'form-control' , 'autofocus'=>'on','required']) !!}
       </div>
     </div>
     <br><br><br><br><br>

@@ -43,14 +43,17 @@ class GraficoController extends Controller
 
 
 
-        $consulta = DB::select("select ca.idcartera as ids, ca.nombre as nome, ca.ejecutivo as eje,
-            (SELECT count(*) FROM cliente, cartera WHERE cliente.idcartera = cartera.idcartera) as nom, count(*) mon
-            FROM cliente c, cartera ca, negocio n, cuenta cu, detalle_liquidacion d
-            WHERE c.idcartera = ca.idcartera AND n.idcliente = c.idcliente AND cu.idnegocio = n.idnegocio 
-                AND d.idcuenta = cu.idcuenta AND d.estado = 'CANCELADO' 
-            GROUP BY   ca.idcartera,ca.nombre, ca.ejecutivo;");
+        $consulta = DB::select("select cuenta.montocapital, cuenta.mora as mora,
+            (SELECT SUM(cuenta.mora) FROM cuenta WHERE cuenta.estado='INACTIVO') as mor,
+            (SELECT SUM(cuenta.montocapital) FROM cuenta WHERE cuenta.estado='ACTIVO') as montocap,
+            (SELECT SUM(detalle_liquidacion.cuotacapital) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as capital,
+            (SELECT SUM(detalle_liquidacion.totaldiario) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as total,
+            (SELECT SUM(detalle_liquidacion.interes) FROM detalle_liquidacion WHERE detalle_liquidacion.estado='CANCELADO') as interes
+            FROM cliente, cartera, negocio, cuenta, detalle_liquidacion
+            WHERE cliente.idcartera = cartera.idcartera AND negocio.idcliente = cliente.idcliente AND cuenta.idnegocio = negocio.idnegocio AND detalle_liquidacion.idcuenta = cuenta.idcuenta AND cuenta.idcuenta = ?
+            GROUP BY cuenta.montocapital, cuenta.mora;",[$idcart]);
 
-        return view('Estrategicos.graficoCartera.show',["consulta"=>$consulta,"carteras"=>$carteras,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
+        return view('Estrategicos.graficoCartera.show',["ini"=>$ini,"fin"=>$fin,"consulta"=>$consulta,"carteras"=>$carteras,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
     }
 
 }

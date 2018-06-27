@@ -17,26 +17,25 @@
     <p class="col-md-2 col-lg-2 col-sm-2 col-lg-offset-10 col-md-offset-10">{{$fecha_actual}}</p>
   </div>
   
-  <h4 align="center"><b>REPORTE DE CLASIFICACION DE EJECUTIVOS</b></h4>
+  <h4 align="center"><b>CONSOLIDADO DE CARTERA</b></h4>
   <br>
   <div class="row form-group">
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Ejecutivo:</b>&nbsp;&nbsp;&nbsp; José Castro</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Supervisor:</b>&nbsp;&nbsp;&nbsp; Pedro Lopéz</p>
+
+
   </div>
 
 
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="table-responsive">
-          <table class="table table-striped table-bordered table-condensed text-centered" style="border: 1px solid #333;">
+          <table class="table table-striped table-bordered table-condensed text-centered"  style="border-collapse: collapse; " style="border: 1px solid #333;">
               <thead>
                 <tr style="border: 1px solid #333;text-align: center;">
-                  <th style="border: 1px solid #333;text-align: center;">Nº</th>
-                  <th style="border: 1px solid #333;text-align: center; width: 220px;">EJECUTIVO</th>
-                  <th style="border: 1px solid #333;text-align: center;">CARTERA ASIGNADA</th>
-                  <th style="border: 1px solid #333;text-align: center;">CANTIDAD DE CLIENTES</th>
-                  <th style="border: 1px solid #333;text-align: center;">CANTIDAD DE PAGOS</th>
-                  <th style="border: 1px solid #333;text-align: center;">CLASIFICACION</th>
+                  <th style="border: 1px solid #333;text-align: center;">Monto</th>
+                  <th style="border: 1px solid #333;text-align: center; width: 220px;">Intereses</th>
+                  <th style="border: 1px solid #333;text-align: center;">Capital</th>
+                  <th style="border: 1px solid #333;text-align: center;">Total</th>
+                  <th style="border: 1px solid #333;text-align: center;">Mora</th>
                 </tr>
               </thead>
               <?php
@@ -45,11 +44,22 @@
                 $i=0;
               ?>
               <tbody>
+              	@foreach ($consulta as $ca)
+              	<tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">{{$ca->montocap}}</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">{{$ca->interes}}</td>
+                  <td style="border: 1px solid #333;text-align: center;">{{$ca->capital}}</td>
+                  <td style="border: 1px solid #333;text-align: center;">{{$ca->total}}</td>
+                  <td style="border: 1px solid #333;text-align: center;">{{round($ca->mor,2)}}</td>
+                </tr>
+                @endforeach
+
               </tbody>
           </table>
       </div>
     </div>
   </div>
+  <br><br>
 <div class="row">
     <a href="{{URL::action('GraficoController@index')}}" class="btn btn-primary btn-md col-md-offset-1"> REGRESAR</a>
     
