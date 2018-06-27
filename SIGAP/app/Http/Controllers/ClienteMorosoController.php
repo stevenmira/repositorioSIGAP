@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sigafi\Http\Requests;
 use sigafi\Fecha;
 use DB;
+use Carbon\Carbon;
 
 class ClienteMorosoController extends Controller
 {
@@ -60,18 +61,6 @@ class ClienteMorosoController extends Controller
             return view('Estrategicos.refinanciamiento.index',["fecha_actual"=>$fecha_actual, "usuarioactual"=>$usuarioactual]);
         }
 
-       /* $clientes = DB::table('cliente as cliente')
-        ->select('cliente.nombre','cliente.apellido','negocio.nombre as nombreNegocio','prestamo.monto as m','cartera.nombre as nombreCartera',DB::raw('COUNT(cliente.nombre) as number'),DB::raw('(select monto from detalle_liquidacion where detalle_liquidacion=cuenta.idcuenta order by monto asc limit 1 offset 0)'))
-        ->join('negocio as negocio','cliente.idcliente','=','negocio.idcliente')
-        ->join('cuenta as cuenta','negocio.idnegocio','=','cuenta.idnegocio')
-        ->join('prestamo as prestamo','cuenta.idprestamo','=','prestamo.idprestamo')
-        ->join('detalle_liquidacion as detalle','cuenta.idcuenta',"=",'detalle.idcuenta')
-        ->join('cartera as cartera','cliente.idcartera','=','cartera.idcartera')
-        ->where('prestamo.fecha','>=', $desde)
-        ->where('prestamo.fecha','<=', $hasta)
-        ->where('detalle_liquidacion.estado','=','ATRASO')
-        ->groupby('cliente.nombre','cliente.apellido','negocio.nombre','prestamo.monto','cartera.nombre')
-        ->get();*/
 
         $clientes = DB::select("select c.nombre, c.apellido,count(*)as num, n.nombre as nombreNegocio,p.monto as m,
 (select monto from detalle_liquidacion where detalle_liquidacion.idcuenta=cc.idcuenta order by monto asc limit 1 offset 0) as mount, 
@@ -150,5 +139,56 @@ group by c.nombre,c.apellido,n.nombre,p.monto,cc.idcuenta, ca.nombre;",[$desde,$
     public function destroy($id)
     {
         //
+    }
+
+    public function clienteMorosoPDF($desde,$hasta)
+    {
+
+$clientes = DB::select("select c.nombre, c.apellido,count(*)as num, n.nombre as nombreNegocio,p.monto as m,
+(select monto from detalle_liquidacion where detalle_liquidacion.idcuenta=cc.idcuenta order by monto asc limit 1 offset 0) as mount, 
+(p.monto - (select monto from detalle_liquidacion where detalle_liquidacion.idcuenta=cc.idcuenta order by monto asc limit 1 offset 0))as dif, ca.nombre as nombreCartera
+
+from cliente c, negocio n ,cuenta cc, prestamo p,detalle_liquidacion d, cartera ca where
+
+c.idcliente = n.idcliente and
+n.idnegocio = cc.idnegocio and
+cc.idprestamo = p.idprestamo and
+cc.idcuenta = d.idcuenta and
+c.idcartera = ca.idcartera and
+d.estado = 'ATRASO' and
+p.fecha >= ? and
+p.fecha <= ?
+group by c.nombre,c.apellido,n.nombre,p.monto,cc.idcuenta, ca.nombre;",[$desde,$hasta]);
+
+        $total1=0;
+        $total2=0;
+        $total3=0;
+
+
+            foreach ($clientes as $cl) {
+                $total1+=round($cl->m,2);
+                $total2+=round($cl->mount,2);
+                $total3+=round($cl->dif,2);
+
+                
+                
+            }
+
+
+            $fecha_actual = Carbon::now();
+            $fecha_actual = $fecha_actual->format('d-m-Y');
+
+            $name = "clienteMorosoPDF";
+            $vistaurl = "reportes/clienteMoroso";
+
+            return $this -> clienteMorosoReporte($vistaurl,$name,$clientes,$total1,$total2,$total3,$fecha_actual,$desde,$hasta);
+    }
+
+    public function clienteMorosoReporte($vistaurl,$name,$clientes,$total1,$total2,$total3,$fecha_actual,$desde,$hasta)
+    {
+      $view=\View::make($vistaurl,compact('vistaurl','name','clientes','total1','total2','total3','fecha_actual','desde','hasta'))->render();
+        $pdf =\App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream($name);   
     }
 }
