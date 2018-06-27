@@ -135,12 +135,27 @@ class Reporteria extends Controller
         return $pdf->stream($nombre.".pdf");
         
     }
-    public function reporte10(Request $request) {
+    public function reporte10($ide) {
         
         $vistaurl = "gerencial.reporte10";
 
         $nombre = "Reporte10";
-        $view=\View::make($vistaurl)->render();
+
+        $fecha_actual = Fecha::spanish();
+
+        $carteras = DB::table('cartera')->orderby('cartera.nombre','asc')->get();
+
+
+
+        $consulta = DB::select("select ca.idcartera as ids, ca.nombre as nome, ca.ejecutivo as eje,
+            (SELECT count(*) FROM cliente, cartera WHERE cliente.idcartera = cartera.idcartera) as nom, count(*) mon
+            FROM cliente c, cartera ca, negocio n, cuenta cu, detalle_liquidacion d
+            WHERE c.idcartera = ca.idcartera AND n.idcliente = c.idcliente AND cu.idnegocio = n.idnegocio 
+                AND d.idcuenta = cu.idcuenta AND d.estado = 'CANCELADO' 
+            GROUP BY   ca.idcartera,ca.nombre, ca.ejecutivo;");
+
+
+        $view=\View::make($vistaurl,compact('consulta'))->render();
         $pdf =\App::make('dompdf.wrapper');
 
         $pdf->loadHTML($view);

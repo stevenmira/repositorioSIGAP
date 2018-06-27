@@ -40,7 +40,16 @@ class ClasificacionEjecutivosController extends Controller
 
         $carteras = DB::table('cartera')->orderby('cartera.nombre','asc')->get();
 
-        return view('Tacticos.ClasificacionEjecutivos.show',["ide"=>$ide,"carteras"=>$carteras,"fecha"=>$fecha,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
+
+
+        $consulta = DB::select("select ca.idcartera as ids, ca.nombre as nome, ca.ejecutivo as eje,
+            (SELECT count(*) FROM cliente, cartera WHERE cliente.idcartera = cartera.idcartera) as nom, count(*) mon
+            FROM cliente c, cartera ca, negocio n, cuenta cu, detalle_liquidacion d
+            WHERE c.idcartera = ca.idcartera AND n.idcliente = c.idcliente AND cu.idnegocio = n.idnegocio 
+                AND d.idcuenta = cu.idcuenta AND d.estado = 'CANCELADO' 
+            GROUP BY   ca.idcartera,ca.nombre, ca.ejecutivo;");
+
+        return view('Tacticos.clasificacionEjecutivos.show',["consulta"=>$consulta,"ide"=>$ide,"carteras"=>$carteras,"fecha"=>$fecha,"fecha_actual"=>$fecha_actual,"usuarioactual"=>$usuarioactual]);
     }
 
 }
