@@ -29,6 +29,6 @@
             </li>
             <li>
               <a href="{{URL::action('GraficoController@index')}}">
-                <i class="fa fa-file-text"></i> <span><small>Grafico Mensual de Cartera de Cliente</small></span>
+                <i class="fa fa-file-text"></i> <span><small>Consolidado Mensual de Cartera</small></span>
               </a>
             </li>

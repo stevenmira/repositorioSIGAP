@@ -21,7 +21,7 @@
   <br>
   <div class="row form-group">
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Cartera:</b>&nbsp;&nbsp;&nbsp; {{$cartera->nombre}}</p>
-    <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha Inicio:</b>&nbsp;&nbsp;&nbsp; {{$desde}}</p>
+    <p class="col-md-4 col-lg-3 col-sm-3"><b>Fecha Inicio:</b>&nbsp;&nbsp;&nbsp; {{$desde}}</p>
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Fecha Fin:</b>&nbsp;&nbsp;&nbsp; {{$hasta}}</p>
     <!--<p class="col-md-3 col-lg-3 col-sm-3"><b>Ejecutivo:</b>&nbsp;&nbsp;&nbsp; José Castro</p>
     <p class="col-md-3 col-lg-3 col-sm-3"><b>Supervisor:</b>&nbsp;&nbsp;&nbsp; Pedro Lopéz</p>-->
