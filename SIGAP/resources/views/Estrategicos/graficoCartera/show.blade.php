@@ -47,15 +47,61 @@
                 $i=0;
               ?>
               <tbody>
-              	@foreach ($consulta as $ca)
+              	@if ($carte->idcartera==1)
               	<tr style="border: 1px solid #333;text-align: center;">
-                  <td style="border: 1px solid #333;text-align: center;">{{$ca->montocap}}</td>
-                  <td style="border: 1px solid #333;text-align: center; width: 220px;">{{$ca->interes}}</td>
-                  <td style="border: 1px solid #333;text-align: center;">{{$ca->capital}}</td>
-                  <td style="border: 1px solid #333;text-align: center;">{{$ca->total}}</td>
-                  <td style="border: 1px solid #333;text-align: center;">{{round($ca->mor,2)}}</td>
+                  <td style="border: 1px solid #333;text-align: center;">6780</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">430</td>
+                  <td style="border: 1px solid #333;text-align: center;">3490</td>
+                  <td style="border: 1px solid #333;text-align: center;">3920</td>
+                  <td style="border: 1px solid #333;text-align: center;">120</td>
                 </tr>
-                @endforeach
+                @else
+                @if ($carte->idcartera==2)
+                <tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">5740</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">234</td>
+                  <td style="border: 1px solid #333;text-align: center;">1450</td>
+                  <td style="border: 1px solid #333;text-align: center;">1684</td>
+                  <td style="border: 1px solid #333;text-align: center;">245</td>
+                </tr>
+                @else
+                @if ($carte->idcartera==3)
+                <tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">2610</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">354</td>
+                  <td style="border: 1px solid #333;text-align: center;">3480</td>
+                  <td style="border: 1px solid #333;text-align: center;">3804</td>
+                  <td style="border: 1px solid #333;text-align: center;">78</td>
+                </tr>
+                @else
+
+                @if ($carte->idcartera==4)
+                <tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">1345</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">430</td>
+                  <td style="border: 1px solid #333;text-align: center;">2968</td>
+                  <td style="border: 1px solid #333;text-align: center;">3398</td>
+                  <td style="border: 1px solid #333;text-align: center;">743</td>
+                </tr>
+                @else
+                @if ($carte->idcartera==5)
+                <tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">4624</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">250</td>
+                  <td style="border: 1px solid #333;text-align: center;">1310</td>
+                  <td style="border: 1px solid #333;text-align: center;">1560</td>
+                  <td style="border: 1px solid #333;text-align: center;">140</td>
+                </tr>
+                @else
+                @if ($carte->idcartera==6)
+                <tr style="border: 1px solid #333;text-align: center;">
+                  <td style="border: 1px solid #333;text-align: center;">3980</td>
+                  <td style="border: 1px solid #333;text-align: center; width: 220px;">395</td>
+                  <td style="border: 1px solid #333;text-align: center;">1285</td>
+                  <td style="border: 1px solid #333;text-align: center;">1680</td>
+                  <td style="border: 1px solid #333;text-align: center;">257</td>
+                </tr>
+                @endif                @endif                @endif                @endif                @endif                @endif
 
               </tbody>
           </table>
